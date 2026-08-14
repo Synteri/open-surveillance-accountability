@@ -1,0 +1,29 @@
+# Python validation artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local environments and secrets
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary and generated files
+*.tmp
+*.temp
+*.bak
+*.log
+coverage.xml
