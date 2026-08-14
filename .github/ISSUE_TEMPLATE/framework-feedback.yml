@@ -1,0 +1,93 @@
+name: Framework or technical feedback
+description: Challenge an OASPS requirement, actor assignment, wording choice, or technical feasibility assumption.
+title: "[Framework feedback]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        OASPS should survive strong criticism from civil-liberties, public-safety, legal, technical, and local perspectives. Good-faith disagreement is welcome. Participation does not imply endorsement.
+
+  - type: input
+    id: requirement_id
+    attributes:
+      label: Requirement or section
+      description: Give the stable requirement ID or the exact section if the concern is repository-wide.
+      placeholder: "Example: OASPS-C03"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: concern_type
+    attributes:
+      label: Type of concern
+      options:
+        - Unnecessary requirement
+        - Insufficient safeguard
+        - Unfair burden or tradeoff
+        - Wrong responsible actor
+        - Technically infeasible or meaningless
+        - Conflict with law or recognized guidance
+        - Wording or clarity problem
+        - Other framework concern
+    validations:
+      required: true
+
+  - type: dropdown
+    id: perspective
+    attributes:
+      label: Primary perspective
+      description: This helps reviewers understand the practical angle; it does not determine whether the feedback is accepted.
+      options:
+        - Resident or community member
+        - Civil liberties or privacy
+        - Law enforcement or public safety
+        - Security or software engineering
+        - Legal or policy
+        - Journalism or public records
+        - Vendor or implementer
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: objection
+    attributes:
+      label: Objection
+      description: Explain the failure mode, tradeoff, unfairness, missing protection, or ambiguity as concretely as possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Practical consequences
+      description: Who would be affected, under what conditions, and how serious is the effect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_change
+    attributes:
+      label: Better approach
+      description: Propose revised language, a different responsible actor, a testable proof requirement, an exception, or removal. If no solution is known, say so.
+    validations:
+      required: true
+
+  - type: textarea
+    id: supporting_material
+    attributes:
+      label: Supporting material
+      description: Link relevant law, professional guidance, research, implementation experience, or technical documentation. Explain what each source supports.
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I am offering good-faith criticism and have separated evidence from my judgment.
+          required: true
+        - label: I have not included personal data, nonpublic operational material, results from unauthorized testing, or exploit instructions.
+          required: true
+        - label: I understand that feedback is not treated as endorsement unless I explicitly authorize that description.
+          required: true

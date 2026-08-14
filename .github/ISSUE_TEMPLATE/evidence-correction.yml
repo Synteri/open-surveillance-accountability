@@ -1,0 +1,74 @@
+name: Evidence correction
+description: Report a factual claim, source, date, quotation, or characterization that may be wrong or outdated.
+title: "[Evidence correction]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve the evidence record. Missing public evidence is not proof of misconduct, and submitting a correction does not imply endorsement of OASPS.
+
+        Do not include raw plate data, personal travel records, private contact information, credentials, nonpublic material, or vulnerability details. Redact unrelated personal information before attaching a public record.
+
+  - type: input
+    id: affected_item
+    attributes:
+      label: Affected claim or stable ID
+      description: Give the requirement, finding, source ID, file path, or exact heading that needs correction.
+      placeholder: "Example: FS-CT-FAIRFIELD-003 or case-studies/flock-safety/FINDINGS.md — Retention"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_text
+    attributes:
+      label: Current claim
+      description: Quote only the minimum text needed to identify the claim. Do not copy sensitive data.
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: Explain what is wrong or outdated, what the corrected statement should say, and what should remain uncertain.
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Supporting source URL
+      description: Prefer a primary, stable, lawfully public source or public archive URL.
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: source_details
+    attributes:
+      label: Source details and limits
+      description: Include title, publisher, publication or record date, access date, jurisdiction, and what the source does and does not establish.
+      placeholder: "Accessed YYYY-MM-DD. This record establishes... It does not establish..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: conflicting_evidence
+    attributes:
+      label: Conflicting or additional evidence
+      description: List any source that conflicts with your correction, or write "None known."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety and contribution checks
+      options:
+        - label: I have not included raw plate data, personal travel records, unnecessary personal information, credentials, nonpublic operational material, or exploit details.
+          required: true
+        - label: I have the right to share the submitted material or have linked to a lawfully public source.
+          required: true
+        - label: I understand that submitting feedback is not treated as endorsement unless I explicitly authorize that description.
+          required: true

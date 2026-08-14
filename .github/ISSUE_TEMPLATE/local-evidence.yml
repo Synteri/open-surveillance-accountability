@@ -1,0 +1,108 @@
+name: Local evidence
+description: Submit a contract, policy, audit, public record, law, or transparency link relevant to a jurisdiction.
+title: "[Local evidence]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Local evidence helps distinguish a vendor's platform claims from a particular agency's contract, configuration, policy, and actual public record.
+
+        Prefer a public URL and metadata over uploading a copy. Do not include raw plate data, personal travel records, requester contact information, private email addresses, credentials, nonpublic material, or unrelated personal data. A record that cannot be shared safely should be described at a high level.
+
+  - type: input
+    id: jurisdiction
+    attributes:
+      label: Jurisdiction
+      description: Give the country, state or province, and municipality or agency area.
+      placeholder: "Fairfield, Connecticut, United States"
+    validations:
+      required: true
+
+  - type: input
+    id: agency
+    attributes:
+      label: Agency or public body
+      placeholder: "Example: Fairfield Police Department"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: record_type
+    attributes:
+      label: Type of evidence
+      options:
+        - Contract, order form, amendment, invoice, or renewal
+        - Agency policy or written directive
+        - Audit log or aggregate audit report
+        - Transparency Portal or public dashboard
+        - Public-record response
+        - Meeting agenda, minutes, or approval record
+        - Statute, regulation, court record, or official guidance
+        - Configuration or product inventory record
+        - Reporting or research
+        - Other local evidence
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: Public source URL
+      description: Link directly to the record or a lawful public archive when possible. If no URL exists, explain that below.
+      placeholder: "https://..."
+
+  - type: input
+    id: record_date
+    attributes:
+      label: Record date or covered period
+      description: Use ISO dates where possible. Distinguish a historical record from evidence of current behavior.
+      placeholder: "2026-08-14 or 2026-01-01 through 2026-08-14"
+    validations:
+      required: true
+
+  - type: input
+    id: accessed_date
+    attributes:
+      label: Date accessed
+      placeholder: "YYYY-MM-DD"
+    validations:
+      required: true
+
+  - type: textarea
+    id: relevance
+    attributes:
+      label: What the evidence establishes
+      description: Identify the affected requirement, finding, or unknown and explain the narrow fact the record supports.
+    validations:
+      required: true
+
+  - type: textarea
+    id: limits
+    attributes:
+      label: What remains unknown
+      description: Explain limits such as age, incomplete pages, redactions, unclear renewal status, or the difference between policy and deployed configuration.
+    validations:
+      required: true
+
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Provenance and handling notes
+      description: Say who published or produced the record, whether it was redacted, and whether reuse or redistribution is restricted. Do not include requester personal details.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety and rights checks
+      options:
+        - label: I have removed raw plate data, personal travel records, requester addresses, private contact information, credentials, and unrelated personal data.
+          required: true
+        - label: The material is lawfully public or I have the right to share it for review.
+          required: true
+        - label: I have not included nonpublic operational material, exploit details, or results from unauthorized testing.
+          required: true
+        - label: I understand that this submission does not imply endorsement of OASPS or any finding.
+          required: true
