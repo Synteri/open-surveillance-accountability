@@ -4,10 +4,14 @@ All notable changes to the standard, repository-wide method, and public evidence
 
 ## [Unreleased]
 
+### Changed
+
+- Updated current-status wording to identify `0.3.0-draft.1` as an open public working draft without changing requirements, findings, or assessments.
+- Added a root overview of the repository's split CC BY 4.0 and MIT licensing.
+
 ### Pending
 
-- Owner review of the private bootstrap and all migrated factual claims.
-- Fairfield current-state evidence, voluntary adversarial review, and technical feasibility review before any public-draft release.
+- Fairfield current-state evidence, public adversarial review, and technical feasibility review before any later tagged release.
 - No public tag, GitHub Release, Pages site, or external announcement has been authorized by this changelog entry.
 
 ## [0.3.0-draft.1] - 2026-08-14

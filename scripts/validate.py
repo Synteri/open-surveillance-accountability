@@ -48,6 +48,7 @@ CORE_FILES = (
     "GLOSSARY.md",
     "LICENSE-CODE",
     "LICENSE-CONTENT",
+    "LICENSE.md",
     "METHODOLOGY.md",
     "README.md",
     "ROADMAP.md",

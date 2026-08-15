@@ -28,7 +28,7 @@ OASPS is not:
 
 ## Current draft
 
-This repository packages **OASPS `0.3.0-draft.1`** for private bootstrap review. It has not been approved for public release. The standard is intentionally separated from its first case study: [STANDARD.md](STANDARD.md) states requirements for any public surveillance system, while [the Flock Safety case study](case-studies/flock-safety/README.md) evaluates only the Flock ALPR ecosystem described in its [scope](case-studies/flock-safety/SCOPE.md).
+This repository packages **OASPS `0.3.0-draft.1`** as an open public working draft released for review, correction, and good-faith criticism. It is not a stable standard, certification, legal determination, or finding of wrongdoing. The `main` branch is a working draft, not a tagged stable release. The standard is intentionally separated from its first case study: [STANDARD.md](STANDARD.md) states requirements for any public surveillance system, while [the Flock Safety case study](case-studies/flock-safety/README.md) evaluates only the Flock ALPR ecosystem described in its [scope](case-studies/flock-safety/SCOPE.md).
 
 <!-- oasps-citations:start -->
 The current evidence supports a deliberately balanced conclusion: Flock documents and appears to implement several meaningful safeguards, including attributable searches, purpose selection, configurable sharing, transparency tools, and deletion controls. Important rights-relevant layers nevertheless remain dependent on vendor or agency statements rather than a complete, independently verifiable chain from written promise to deployed behavior. This is an evidence and observability gap, not evidence of misconduct. [SRC-0010, SRC-0016, SRC-0018, SRC-0019, SRC-0021]
@@ -72,6 +72,7 @@ Do not submit plate numbers, private travel records, requester home addresses, p
 - Current repository version: [`VERSION`](VERSION)
 - Change history: [`CHANGELOG.md`](CHANGELOG.md)
 - Preferred citation metadata: [`CITATION.cff`](CITATION.cff)
+- Split-license overview: [`LICENSE.md`](LICENSE.md)
 - Documentation and structured factual content: [CC BY 4.0](LICENSE-CONTENT)
 - Validation code: [MIT](LICENSE-CODE)
 

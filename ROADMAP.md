@@ -1,15 +1,16 @@
 # Roadmap
 
-OASPS is currently a private bootstrap at `0.3.0-draft.1`. This roadmap lists evidence and review work; it is not a promise that a public release, social post, additional case study, or website will occur.
+OASPS `0.3.0-draft.1` is an open public working draft released for review, correction, and good-faith criticism. It is not a stable standard, certification, legal determination, or finding of wrongdoing. This roadmap lists evidence and review work; it is not a promise that a tagged release, social post, additional case study, or website will occur.
 
-## 1. Complete the private repository bootstrap
+## 1. Complete the private bootstrap and public-draft preparation
 
 - [x] Populate every required standard, methodology, glossary, data, crosswalk, evidence, case-study, jurisdiction, contribution, and validation file with substantive first-pass content.
 - [x] Confirm that all factual case-study claims resolve to source IDs and that all controlled values pass validation.
 - [x] Review the repository for secrets, plate data, personal travel records, unnecessary personal information, and nonpublic operational details.
 - [x] Record unrecoverable sources and translation limits instead of inventing citations.
-- [x] Keep the repository private, GitHub Pages disabled, and the bootstrap work unmerged until owner review.
-- [ ] Complete independent review of the `0.3.0-draft.1` remediation, including validator enforcement, evidence metadata, matrix semantics, exact standards baselines, and the revised public-inspectability rule.
+- [x] Kept the repository private, GitHub Pages disabled, and the bootstrap work unmerged until owner review.
+- [x] Complete independent review of the `0.3.0-draft.1` remediation, including validator enforcement, evidence metadata, matrix semantics, exact standards baselines, and the revised public-inspectability rule.
+- [x] Obtain explicit owner approval to change repository visibility and publish the open public working draft.
 
 ## 2. Establish Fairfield's current state
 
@@ -35,7 +36,7 @@ Any public-record request requires a separate, deliberate decision because the r
 - [ ] Test the feasibility and meaning of OASPS deployment-attestation, auditability, and independent-review requirements without performing unauthorized testing.
 - [ ] Keep cybersecurity assurance separate from civil-liberties and rights-use assurance.
 
-## 4. Conduct voluntary adversarial review
+## 4. Conduct public adversarial review
 
 Invite and visibly disposition good-faith criticism from at least these perspectives:
 
@@ -46,22 +47,22 @@ Invite and visibly disposition good-faith criticism from at least these perspect
 
 Review is voluntary and unpaid at this stage. Feedback is not endorsement unless the reviewer explicitly says so. Publication does not require a paid or formal expert blessing, but serious criticism received should be recorded and handled openly.
 
-## 5. Prepare an owner-approved public draft
+## 5. Improve the evidence and consider a later tagged release
 
-Before a public release:
+The initial open public working draft is published from `main` without a tag or GitHub Release. Public adversarial review and evidence improvement come next; a later tagged release is optional and requires a separate owner decision. Before any later tagged release:
 
-- [ ] Represent the strongest fair pro-Flock response and preserve meaningful safeguards alongside gaps.
-- [ ] Separate deployed behavior, customer-configurable behavior, jurisdiction-specific behavior, announced changes, and unknowns.
-- [ ] Confirm that every consequential factual finding has a valid, supporting source.
+- [ ] Reassess the strongest fair pro-Flock response and preserve meaningful safeguards alongside gaps after public criticism.
+- [ ] Recheck distinctions among deployed behavior, customer-configurable behavior, jurisdiction-specific behavior, announced changes, and unknowns.
+- [ ] Confirm that every consequential factual finding still has a valid, supporting source.
 - [ ] Confirm that no wording claims accreditation, certification, expert approval, formal outside-framework conformity, or unsupported wrongdoing.
 - [ ] Run `python -m unittest discover -s tests -v` and `python scripts/validate.py` successfully, then inspect links and citations.
-- [ ] Obtain explicit owner approval to change visibility and release.
+- [ ] Obtain explicit owner approval for the specific tag and GitHub Release.
 
-Only after approval should the owner tag `v0.3.0-draft.1` and create release notes that state the standard version, case-study last-verified dates, known limitations, and open-draft status. The bootstrap process must not create a public tag or release.
+If the owner later approves a tagged release, its release notes should state the standard version, case-study last-verified dates, known limitations, and open-draft status. A tag or GitHub Release is not required for the initial open public working draft.
 
 ## 6. Consider initial public sharing
 
-After an approved public-draft release, prepare a low-drama, evidence-forward launch explanation. A possible Facebook launch should state what the project is, what it found, what remains unknown, and how to submit corrections. It must not frame the work as certification, claim expert consensus, or describe an evidence gap as misconduct.
+For any separately approved public sharing, prepare a low-drama, evidence-forward explanation. A possible Facebook communication should state what the project is, what it found, what remains unknown, and how to submit corrections. It must not frame the work as certification, claim expert consensus, or describe an evidence gap as misconduct.
 
 Whether to post on Facebook or any other external channel is a separate explicit owner decision. Repository creation does not authorize external posting.
 
