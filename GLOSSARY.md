@@ -14,9 +14,17 @@ The government department, authority, or other public body that buys, operates, 
 
 An implementation state for a control or behavior that has been promised, scheduled, or is rolling out but is not established as universally deployed in the evaluated scope.
 
+## Applicability reason
+
+The `applicability_reason` field explaining why an OASPS requirement does not apply to the row's stated subject, actor, or jurisdiction. It is required for `Not applicable`, blank for every other assessment, and cannot be replaced by missing evidence, which is `Unknown`.
+
 ## Assessment
 
 The evaluator's comparison between observed behavior and an OASPS requirement: `Meets`, `Partly meets`, `Does not meet`, `Unknown`, or `Not applicable`. It is separate from confidence in the evidence.
+
+## Actor override reason
+
+The `actor_override_reason` field explaining why a case-study row assigns a different responsible actor from the corresponding requirement in `STANDARD.md`. It is present exactly when the actors differ and narrows the row's scope; it does not silently change the standard's actor assignment.
 
 ## Audit event
 
@@ -30,9 +38,21 @@ An ordered set of audit events used to reconstruct who did what, when, under wha
 
 A copy retained to restore data or service after loss. A deletion claim is incomplete if it does not explain whether and when deleted data disappears from backups.
 
+## Binding obligation
+
+The specific applicable statute, regulation, contract term, order, or other enforceable duty identified in `binding_obligation` and supported by the row's `source_ids`. The field is present for `Noncompliant` and blank for every other evidence label; falling short of OASPS alone is not enough.
+
 ## Case code
 
 An identifier that links a search or action to an investigation, incident, or other authorized matter. A case code may improve reviewability but does not by itself prove the case exists or the search was lawful.
+
+## Citation-bounded section
+
+A factual narrative region between `<!-- oasps-citations:start -->` and `<!-- oasps-citations:end -->`. Each factual paragraph or list item inside the region ends with source IDs that support the immediately preceding claim.
+
+## Citation exception
+
+An immediately preceding comment in the form `<!-- oasps-citation-exempt: reason -->` that exempts only the next genuinely nonfactual paragraph or list block inside a citation-bounded section. Allowed reasons are `normative`, `methodological`, `editorial`, `question`, and `navigation`; the exception cannot be used for a factual claim.
 
 ## Confidence value
 
@@ -45,6 +65,14 @@ The administrative layer used to configure a system: users, roles, sharing relat
 ## Cross-agency sharing
 
 An arrangement that allows one agency to access, query, receive, or otherwise use data associated with another agency or network.
+
+## Deployment basis
+
+The `deployment_basis` field identifying the cited evidence that affirmatively supports current operation within the row's scope. It is required for `Deployed now` and blank for every other implementation state. A policy promise, old contract, product capability, or neighboring deployment does not by itself justify `Deployed now`.
+
+## Deployment evidence state
+
+The conditional controlled matrix field `deployment_evidence_state`. Its only nonblank value is `Affirmative`, required exactly when `implementation_state` is `Deployed now` and blank for every other implementation state. It means the cited `deployment_basis` affirmatively supports current-in-scope deployment; it does not imply independent verification.
 
 ## Deployed configuration
 
@@ -78,9 +106,21 @@ A copy of data removed from the ordinary application interface, for example as a
 
 A list of plates or vehicle identifiers that can trigger an alert when a system records a possible match. The list's source, legal basis, accuracy, duration, and update history affect accountability.
 
+## Historical
+
+An implementation state for a past condition established by evidence that does not establish the condition remains current. A historical row must identify the relevant past date or period in `historical_as_of`.
+
+## Historical as of
+
+The ISO date in `historical_as_of` when a `Historical` row's condition existed. It is required for `Historical`, blank for every other implementation state, and differs from `last_verified`, which records when the evaluator checked the evidence.
+
 ## Independent oversight
 
 Review performed by a body that is meaningfully separate from the agency or vendor whose conduct is being evaluated and has sufficient access, authority, competence, and freedom from conflicts.
+
+## Independent public authority
+
+A public body with legal independence, relevant competence, and authority to approve, time-limit, and periodically review a component-specific restriction on public inspectability. A vendor, customer, or confidential reviewer does not qualify merely by declaring itself independent.
 
 ## Independent verification
 
@@ -89,6 +129,10 @@ Evidence an external reviewer can check without relying exclusively on the state
 ## Legal hold
 
 A direction to preserve specific information that would otherwise be deleted, usually because of litigation, investigation, or another legal duty.
+
+## Known fact basis
+
+The `known_fact_basis` field identifying the narrow, separately known fact sufficient for a definitive assessment when an `Unknown` evidence label is paired with `Meets`, `Partly meets`, or `Does not meet`. It is blank for every other evidence/assessment combination and must not turn partial, indexed-only, unavailable, or broken-link evidence into a stronger fact.
 
 ## Least privilege
 
@@ -130,6 +174,10 @@ Evidence of the exact software, model, policy, and configuration version serving
 
 Restricting collection, search, sharing, and reuse to defined and authorized purposes instead of allowing unrelated later use.
 
+## Public inspectability
+
+The default OASPS-E01 condition in which the public can examine rights-relevant data schemas, collected and derived fields, authorization and access-control logic, audit-event semantics, retention and deletion behavior, sharing controls, inference and correlation behavior, prohibited-use enforcement, configuration and change semantics, and test evidence closely enough to understand and challenge whether safeguards exist and operate.
+
 ## Replica
 
 An operational copy of data maintained for availability, performance, search, or geographic distribution. Replicas may be distinct from backups and must be considered in deletion claims.
@@ -137,6 +185,10 @@ An operational copy of data maintained for availability, performance, search, or
 ## Responsible actor
 
 The actor able and obligated to satisfy a requirement: `Vendor`, `Agency`, `Legislature`, `Court`, `Independent oversight`, or `Shared`.
+
+## Restricted auditor-only access
+
+A temporary, component-specific exception to public inspectability under OASPS-E01. It is permitted only when every E01 condition is established, including concrete security risk, independent-public-authority approval, public scope and general reason, time limit and review, complete enforceable qualified-reviewer access, and public reporting to the greatest lawful extent. Trade-secret status alone is insufficient.
 
 ## Retention
 
@@ -177,6 +229,10 @@ An evidence label meaning the vendor publicly states a behavior but complete imp
 ## Vendor-privileged access
 
 Access by vendor personnel or services beyond ordinary agency-user permissions, often for support, maintenance, security, or system administration.
+
+## Verified fact
+
+The exact fact directly established by cited evidence and recorded in `verified_fact` when a matrix row uses the evidence label `Verified`. It distinguishes a verified document or published statement from independently verified product behavior, stays within the cited evidence's subject, date, jurisdiction, and retrieval limits, and is blank for every other evidence label.
 
 ## Versioned public change history
 

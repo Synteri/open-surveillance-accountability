@@ -1,6 +1,6 @@
 # Roadmap
 
-OASPS is currently a private bootstrap at `0.2.0-draft.1`. This roadmap lists evidence and review work; it is not a promise that a public release, social post, additional case study, or website will occur.
+OASPS is currently a private bootstrap at `0.3.0-draft.1`. This roadmap lists evidence and review work; it is not a promise that a public release, social post, additional case study, or website will occur.
 
 ## 1. Complete the private repository bootstrap
 
@@ -9,6 +9,7 @@ OASPS is currently a private bootstrap at `0.2.0-draft.1`. This roadmap lists ev
 - [x] Review the repository for secrets, plate data, personal travel records, unnecessary personal information, and nonpublic operational details.
 - [x] Record unrecoverable sources and translation limits instead of inventing citations.
 - [x] Keep the repository private, GitHub Pages disabled, and the bootstrap work unmerged until owner review.
+- [ ] Complete independent review of the `0.3.0-draft.1` remediation, including validator enforcement, evidence metadata, matrix semantics, exact standards baselines, and the revised public-inspectability rule.
 
 ## 2. Establish Fairfield's current state
 
@@ -30,6 +31,7 @@ Any public-record request requires a separate, deliberate decision because the r
 - [ ] Establish which administrative, API, export, sharing, retention, legal-hold, backup, replica, and machine-learning-ingestion events produce audit records.
 - [ ] Clarify how deletion applies to backups, replicas, derived indexes, evidence preservation, exports, and legal holds.
 - [ ] Assess whether audited software and configuration can be tied to the deployed production version.
+- [ ] Test whether OASPS-E01's component-specific security-risk finding, independent-public-authority approval, public notice, time limit, periodic review, complete reviewer access, and public reporting conditions are legally and technically workable together.
 - [ ] Test the feasibility and meaning of OASPS deployment-attestation, auditability, and independent-review requirements without performing unauthorized testing.
 - [ ] Keep cybersecurity assurance separate from civil-liberties and rights-use assurance.
 
@@ -52,10 +54,10 @@ Before a public release:
 - [ ] Separate deployed behavior, customer-configurable behavior, jurisdiction-specific behavior, announced changes, and unknowns.
 - [ ] Confirm that every consequential factual finding has a valid, supporting source.
 - [ ] Confirm that no wording claims accreditation, certification, expert approval, formal outside-framework conformity, or unsupported wrongdoing.
-- [ ] Run `python scripts/validate.py` successfully and inspect links and citations.
+- [ ] Run `python -m unittest discover -s tests -v` and `python scripts/validate.py` successfully, then inspect links and citations.
 - [ ] Obtain explicit owner approval to change visibility and release.
 
-Only after approval should the owner tag `v0.2.0-draft.1` and create release notes that state the standard version, case-study last-verified dates, known limitations, and open-draft status. The bootstrap process must not create a public tag or release.
+Only after approval should the owner tag `v0.3.0-draft.1` and create release notes that state the standard version, case-study last-verified dates, known limitations, and open-draft status. The bootstrap process must not create a public tag or release.
 
 ## 6. Consider initial public sharing
 
@@ -72,3 +74,7 @@ Whether to post on Facebook or any other external channel is a separate explicit
 ## 8. Optional website
 
 GitHub's Markdown rendering is sufficient for the first public draft. Consider a small, accessible website only if repository evidence and versioning are stable and a website would materially improve resident comprehension. Any website should be generated from versioned repository content, preserve source links and evidence labels, and add no new factual claims. GitHub Pages or another deployment requires separate approval.
+
+## 9. Deferred policy questions
+
+The `0.3.0-draft.1` remediation does not decide a complete material-failure taxonomy, individual notice and contestability rules, heightened authorization tiers for intrusive searches, or recurring democratic sunset and necessity review. These remain candidates for separately scoped public-law, civil-liberties, public-safety, and technical review rather than silent additions to the current draft.

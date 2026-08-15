@@ -11,6 +11,10 @@ Add a local snapshot only when all of the following are true:
 5. the original publisher, title, retrieval date, source ID, and original URL remain clear;
 6. the repository's content license does not misrepresent third-party copyright or licensing.
 
-If redistribution rights are uncertain, do not commit the document. Record a checksum, retrieval date, description, and lawful access note in the source register or an issue instead. A checksum proves file identity, not truth or permission to redistribute.
+If redistribution rights are uncertain, do not commit the document. Record the retrieval date, description, and lawful access note in the source register or an issue instead. A checksum proves file identity, not truth or permission to redistribute, and the repository records one only for a committed local snapshot that the validator can verify.
 
-Snapshots must use descriptive filenames without personal data and must be reviewed before commit. No snapshot is present in `0.2.0-draft.1`.
+Snapshots must use descriptive filenames without personal data and must be reviewed before commit. Use repository-relative paths under `evidence/snapshots/` and only UTF-8 `.txt`, `.md`, `.json`, or `.csv`. Do not store PDFs, executable files, scripts, office files, or web archives.
+
+After any authorized redaction, compute SHA-256 over the exact bytes that would be committed and record the lowercase 64-hex digest in `content_sha256`. Record `retrieved_at` only when the exact retrieval timestamp and timezone are known. Do not infer it from `accessed_date`, and leave both timestamp and hash fields blank when the exact evidence is absent.
+
+No snapshot is present in `0.3.0-draft.1`.

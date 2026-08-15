@@ -16,7 +16,8 @@ These instructions apply to every automated or assisted change in this repositor
 - Keep evidence strength separate from the assessment against a requirement. A vendor statement can establish what the vendor says without independently proving production behavior.
 - Keep documented policy, technical control, deployed configuration, independent verification, and announced future behavior separate.
 - Preserve credible positive findings and conflicting documentation. Do not select only the evidence that supports a preferred conclusion.
-- Every consequential factual paragraph in a Flock or Fairfield narrative must end with one or more source IDs in brackets, such as `[SRC-0007]`.
+- Consequential factual narrative sections are bounded by `<!-- oasps-citations:start -->` and `<!-- oasps-citations:end -->`. Within those sections, each prose paragraph or list item must end with one or more source IDs in brackets, such as `[SRC-0007]`.
+- A deliberately normative, methodological, editorial, question-only, or navigation paragraph inside a designated factual section may be exempted only by placing an immediately preceding `<!-- oasps-citation-exempt: reason -->` comment, where `reason` is `normative`, `methodological`, `editorial`, `question`, or `navigation`. The annotation applies only to the next paragraph or list block and must never be used to exempt a factual claim.
 - Every cited source ID must exist in `evidence/sources.csv` and must support the claim immediately before it.
 - Use stable identifiers. Never recycle a published requirement, source, or finding ID; mark withdrawn items and explain the withdrawal.
 - Prefer short paraphrases to quotations. Label marketing material as vendor evidence, not independent verification.
@@ -49,7 +50,7 @@ These instructions apply to every automated or assisted change in this repositor
 
 ## Required checks before handoff
 
-1. Run `python scripts/validate.py` from the repository root.
+1. Run `python -m unittest discover -s tests -v` and `python scripts/validate.py` from the repository root.
 2. Inspect changed links, source IDs, controlled values, dates, and citations.
 3. Confirm that no secrets, plate data, personal travel records, unnecessary personal information, or nonpublic operational details were added.
 4. Review the diff for unsupported claims and accidental publication, certification, conformity, endorsement, or wrongdoing language.

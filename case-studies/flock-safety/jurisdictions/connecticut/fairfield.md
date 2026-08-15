@@ -5,6 +5,8 @@
 
 ## Bottom line
 
+<!-- oasps-citations:start -->
+
 Public municipal records materially reduce uncertainty about what Fairfield approved in 2024. They do not establish the current 2026 contract, configuration, retention, product inventory, outbound sharing, search history, audit surface, or renewal status. The historical and current states remain separate throughout this record. [SRC-0032, SRC-0033, SRC-0034, SRC-0036]
 
 ## Documented 2024 facts
@@ -19,7 +21,7 @@ The 2024 procurement packet lists an annual recurring subtotal of **$110,000**, 
 
 ### Original product mix
 
-The 2024 order form lists FlockOS Advanced; 21 Falcon units; 4 Falcon Flex units; 8 Wing LPR units; 8 Wing VMS streams; 18 Wing Gateway 8-stream units; and 5 Condor PTZ units. The package was therefore broader than standalone ALPR cameras. OASPS `0.2.0-draft.1` evaluates only the ALPR-relevant subset and does not silently score the other video or platform functions. [SRC-0033]
+The 2024 order form lists FlockOS Advanced; 21 Falcon units; 4 Falcon Flex units; 8 Wing LPR units; 8 Wing VMS streams; 18 Wing Gateway 8-stream units; and 5 Condor PTZ units. The package was therefore broader than standalone ALPR cameras. OASPS `0.3.0-draft.1` evaluates only the ALPR-relevant subset and does not silently score the other video or platform functions. [SRC-0033]
 
 ### Contracted retention
 
@@ -48,6 +50,8 @@ The source set does not establish Fairfield's current retention setting, current
 Public Act 26-14 establishes ALPR restrictions with provision-specific effective dates, principally October 1, 2026 for the provisions discussed in the research record. The act includes restrictions tied to enumerated actual or perceived characteristics, First Amendment activity, immigration enforcement, and reproductive or gender-affirming care, along with retention, sharing, audit, and transparency rules. Public Act 26-76 later amended part of the enacted text, so the original act is not treated as the complete current rule. [SRC-0035, SRC-0037]
 
 Flock publishes Connecticut-specific contractual provisions, but those generic state terms do not establish Fairfield's executed amendment or live configuration. [SRC-0022]
+
+<!-- oasps-citations:end -->
 
 OASPS keeps legal-floor compliance separate from independent verifiability. This repository does not determine whether Fairfield is legally compliant. Even a legally compliant deployment may remain independently under-verifiable on data derivation, vendor access, complete audit coverage, production identity, or local configuration.
 

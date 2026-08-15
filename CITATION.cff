@@ -5,7 +5,7 @@ type: dataset
 authors:
   - family-names: "Schumacher"
     given-names: "Jacob"
-version: "0.2.0-draft.1"
+version: "0.3.0-draft.1"
 repository-code: "https://github.com/Synteri/open-surveillance-accountability"
 url: "https://github.com/Synteri/open-surveillance-accountability"
 license:
@@ -30,5 +30,5 @@ preferred-citation:
       given-names: "Jacob"
   title: "Open Accountability Standard for Public Surveillance Systems"
   year: 2026
-  version: "0.2.0-draft.1"
+  version: "0.3.0-draft.1"
   url: "https://github.com/Synteri/open-surveillance-accountability"

@@ -1,6 +1,7 @@
 # Open Accountability Standard for Public Surveillance Systems
 
-**Version:** OASPS `0.2.0-draft.1`  
+**Version:** OASPS `0.3.0-draft.1`
+
 **Status:** Open draft for private bootstrap review  
 **Last substantive research review:** 2026-08-14
 
@@ -61,7 +62,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Binding policy and contract terms, release gates, change approvals, schema-diff records, and audit evidence showing when new fields became available.
 
-**Recognized basis:** NIST Privacy Framework accountability and transparency; Convention 108+ controller accountability; ISO/IEC 27701:2025 change and privacy governance.
+**Recognized basis:** NIST Privacy Framework 1.0 accountability and transparency; Convention 108+ controller accountability; ISO/IEC 27701:2025 change and privacy governance.
 
 **OASPS extension:** An enforceable completeness commitment and pre-deployment disclosure for surveillance-derived capabilities.
 
@@ -91,7 +92,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Authentication design, role definitions, user and service-account inventory, access reviews, privileged-access records, and independent control testing.
 
-**Recognized basis:** NIST SP 800-53 Rev. 5 Access Control and Identification and Authentication families; NIST Privacy Framework 1.0; Convention 108+.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, Access Control and Identification and Authentication families; NIST Privacy Framework 1.0; Convention 108+.
 
 **OASPS extension:** Applies attribution and least privilege to agency users, administrators, integrations, and vendor-privileged access.
 
@@ -105,7 +106,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Required-purpose interface, permitted-purpose vocabulary, query logs linking purpose to user and time, bypass rules, and sampled independent review.
 
-**Recognized basis:** NIST Privacy Framework purpose limitation; Convention 108+ lawfulness and proportionality; IACP and BJA ALPR policy guidance.
+**Recognized basis:** NIST Privacy Framework 1.0 purpose limitation; Convention 108+ lawfulness and proportionality; IACP and BJA ALPR policy guidance.
 
 **OASPS extension:** A mandatory purpose record attached to every surveillance query.
 
@@ -133,7 +134,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Statute, binding policy, contract restrictions, technical filters, exception rules, training, attempted-use records, and independent compliance review.
 
-**Recognized basis:** Convention 108+ lawfulness, proportionality, and independent supervision; NIST Privacy Framework; IACP and BJA ALPR civil-rights guidance.
+**Recognized basis:** Convention 108+ lawfulness, proportionality, and independent supervision; NIST Privacy Framework 1.0; IACP and BJA ALPR civil-rights guidance.
 
 **OASPS extension:** Explicit protected-activity safeguards tied to both policy and enforceable technical controls.
 
@@ -147,7 +148,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Sharing policy, recipient and network inventory, approval records, time limits, configuration export, change logs, revocation records, and independent review.
 
-**Recognized basis:** Convention 108+ data-flow safeguards; NIST Privacy Framework; NIST SP 800-53 Access Control; ALPR dissemination guidance.
+**Recognized basis:** Convention 108+ data-flow safeguards; NIST Privacy Framework 1.0; NIST SP 800-53 Rev. 5, Release 5.2.0, Access Control family; ALPR dissemination guidance.
 
 **OASPS extension:** Publicly inspectable surveillance-sharing topology and a prohibition on hidden or automatic access.
 
@@ -163,7 +164,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Canonical audit-event schema, immutable or tamper-evident records, administrator-separation controls, sample exports, integrity tests, and independent completeness testing.
 
-**Recognized basis:** NIST SP 800-53 Rev. 5 Audit and Accountability family; NIST SP 800-53A Rev. 5; ISO/IEC 27701:2025 accountability.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, Audit and Accountability family; NIST SP 800-53A Rev. 5, Release 5.2.0; ISO/IEC 27701:2025 accountability.
 
 **OASPS extension:** Explicit coverage of vendor, API, export, alert, and surveillance-specific data actions.
 
@@ -177,7 +178,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Versioned configuration history, actor and timestamp for every change, before-and-after values, tamper-evidence, customer-accessible exports, and independent completeness tests.
 
-**Recognized basis:** NIST SP 800-53 Configuration Management and Audit and Accountability families; NIST SP 800-53A assessment concepts.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, Configuration Management and Audit and Accountability families; NIST SP 800-53A Rev. 5, Release 5.2.0, assessment concepts.
 
 **OASPS extension:** Complete rights-relevant surveillance control-plane evidence, including vendor and local configuration changes.
 
@@ -191,7 +192,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Blocked-action event schema, privacy design, sample records, retention rule, alert and review workflow, and authorized independent testing.
 
-**Recognized basis:** NIST SP 800-53 Audit and Accountability concepts.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, Audit and Accountability concepts.
 
 **OASPS extension:** A surveillance-specific balance between preventing a prohibited query and preserving privacy-safe evidence of the attempt.
 
@@ -205,7 +206,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Event-class retention schedule, storage and deletion controls, legal-hold rules, public-view duration, internal-view duration, and independent operating-effectiveness tests.
 
-**Recognized basis:** NIST SP 800-53 Audit and Accountability; NIST SP 800-53A; ISO/IEC 27701:2025 accountability.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, Audit and Accountability; NIST SP 800-53A Rev. 5, Release 5.2.0; ISO/IEC 27701:2025 accountability.
 
 **OASPS extension:** Separates internal audit retention from the shorter history that may appear on a public portal.
 
@@ -219,7 +220,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Auditor mandate, access terms, full event inventory, unfiltered export mechanism, sampling protocol, findings, exceptions, and published disposition where lawful.
 
-**Recognized basis:** NIST SP 800-53A assessment methodology; Convention 108+ independent supervision; ISO/IEC 27701:2025 accountability.
+**Recognized basis:** NIST SP 800-53A Rev. 5, Release 5.2.0, assessment methodology; Convention 108+ independent supervision; ISO/IEC 27701:2025 accountability.
 
 **OASPS extension:** Rights-focused access to complete use and control-plane evidence, beyond ordinary cybersecurity assurance.
 
@@ -233,7 +234,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Public portal or reports, reporting schema, update schedule, historical archive, privacy review, and reconciliation to internal audit totals.
 
-**Recognized basis:** NIST Privacy Framework transparency; Convention 108+ transparency and accountability; ALPR policy guidance.
+**Recognized basis:** NIST Privacy Framework 1.0 transparency; Convention 108+ transparency and accountability; ALPR policy guidance.
 
 **OASPS extension:** Aggregate reporting designed to detect surveillance-policy drift while protecting individuals.
 
@@ -263,7 +264,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Default policy, local approval, contract term, current configuration export, configuration-change history, and public retention statement.
 
-**Recognized basis:** NIST Privacy Framework; Convention 108+ proportionality and minimization; ISO/IEC 27701:2025; ALPR retention and purging guidance.
+**Recognized basis:** NIST Privacy Framework 1.0; Convention 108+ proportionality and minimization; ISO/IEC 27701:2025; ALPR retention and purging guidance.
 
 **OASPS extension:** Requires a deployment-specific configuration record rather than inference from vendor-wide prose.
 
@@ -277,7 +278,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Case-linked preservation workflow, authorization and expiry rules, preserved-record inventory, legal-hold audit trail, and deletion after the preservation purpose ends.
 
-**Recognized basis:** Data minimization, purpose limitation, and retention principles in NIST Privacy Framework, Convention 108+, and ALPR guidance.
+**Recognized basis:** Data minimization, purpose limitation, and retention principles in NIST Privacy Framework 1.0, Convention 108+, and ALPR guidance.
 
 **OASPS extension:** Explicit technical and governance separation between evidence preservation and ordinary surveillance retention.
 
@@ -291,7 +292,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Storage map, lifecycle configuration, deletion events, backup and replica rules, recovery tests, legal-hold records, and independent operating-effectiveness assessment.
 
-**Recognized basis:** NIST Privacy Framework; Convention 108+ retention limitation; ISO/IEC 27701:2025 lifecycle governance.
+**Recognized basis:** NIST Privacy Framework 1.0; Convention 108+ retention limitation; ISO/IEC 27701:2025 lifecycle governance.
 
 **OASPS extension:** Explicit proof covering replicas, backups, derived indexes, caches, evidence stores, and legal holds.
 
@@ -305,7 +306,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Binding contract and policy, data-flow and ingestion inventory, consent or authorization record, de-identification tests, access and ingestion logs, retention rules, and independent review.
 
-**Recognized basis:** NIST Privacy Framework purpose limitation; Convention 108+ lawfulness and compatible use; ISO/IEC 27701:2025.
+**Recognized basis:** NIST Privacy Framework 1.0 purpose limitation; Convention 108+ lawfulness and compatible use; ISO/IEC 27701:2025.
 
 **OASPS extension:** Explicit surveillance-data and model-training governance, including ingestion observability.
 
@@ -319,25 +320,25 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Clause-level comparison of contract, policy, product documentation, and local authorization; revision history; conflict-resolution rule; and independent legal or procurement review.
 
-**Recognized basis:** General accountability, transparency, and demonstrable-governance principles in ISO/IEC 27701:2025, NIST Privacy Framework, and Convention 108+.
+**Recognized basis:** General accountability, transparency, and demonstrable-governance principles in ISO/IEC 27701:2025, NIST Privacy Framework 1.0, and Convention 108+.
 
 **OASPS extension:** An explicit enforceable alignment test between public promises and contractual data rights.
 
 ## E — Software and deployment verifiability
 
-### OASPS-E01 — Inspectable rights-relevant implementation
+### OASPS-E01 — Publicly inspectable rights-relevant implementation
 
-**Requirement:** Rights-relevant functionality is open source where reasonably possible or available to genuinely independent technical auditors under enforceable access rights and proportionate security protections.
+**Requirement:** Public inspectability is the default for rights-relevant data schemas; collected and derived fields; authorization and access-control logic; audit-event semantics; retention and deletion behavior; sharing controls; inference and correlation behavior; prohibited-use enforcement; configuration and change semantics; and the evidence needed to test those behaviors. Restricted auditor-only access may supplement or temporarily replace public disclosure for a component only when a concrete security risk—not trade-secret or proprietary status alone—justifies the restriction; an independent public authority approves it; the withheld scope and general reason are public; the restriction is time-limited and periodically reviewed; qualified independent reviewers receive complete, enforceable access; and the review's methods, scope, findings, exceptions, remediation status, and retest results are public to the greatest lawful extent. A restriction cannot conceal whether a safeguard exists or operates.
 
-**Why it matters:** Policy promises alone cannot establish how consequential safeguards and inferences actually work.
+**Why it matters:** Policy promises and confidential review alone cannot give the public durable accountability when consequential safeguards and inferences remain indefinitely hidden or when the existence and operation of a safeguard cannot be checked.
 
 **Responsible actor:** Vendor
 
-**Expected proof:** Public source or binding auditor-access terms, complete relevant artifacts, build instructions, test suites, audit scope, findings, and remediation evidence.
+**Expected proof:** Public schemas, source, rules, semantics, behavior descriptions, build material, and test evidence for the listed rights-relevant components. For each temporary restricted component: the concrete security-risk finding; independent-public-authority approval; public withheld-scope and general-reason notice; start, end, and periodic-review records; complete enforceable reviewer-access terms; and public methods, scope, findings, exceptions, remediation status, and retest results to the greatest lawful extent.
 
-**Recognized basis:** NIST SP 800-53 assurance, System and Services Acquisition, and System and Information Integrity concepts.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, assurance, System and Services Acquisition, and System and Information Integrity concepts; NIST SP 800-53A Rev. 5, Release 5.2.0, assessment discipline.
 
-**OASPS extension:** Independent inspectability of civil-rights-relevant surveillance logic; this is stricter than the cited privacy frameworks and needs specialist review.
+**OASPS extension:** Public inspectability as the default, plus a conjunctive and independently governed test for temporary component-specific restriction. The cited frameworks do not themselves establish this exact disclosure rule, which requires specialist public-law, security, and implementation review.
 
 ### OASPS-E02 — Published interfaces and data flows
 
@@ -349,7 +350,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Versioned architecture and data-flow diagrams, API specifications, integration inventory, trust boundaries, event mapping, and independently reviewed correspondence to implementation.
 
-**Recognized basis:** NIST SP 800-53 System and Services Acquisition, Configuration Management, and privacy-transparency concepts.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, System and Services Acquisition, Configuration Management, and privacy-transparency concepts.
 
 **OASPS extension:** A public rights-relevant data-flow view spanning vendor, agency, networks, APIs, and secondary use.
 
@@ -363,7 +364,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Source revision, dependency lock, build recipe, signed artifact digest, reproducibility result or documented alternative assurance, and independent test report.
 
-**Recognized basis:** NIST SP 800-53 Configuration Management, System and Services Acquisition, and System Integrity assurance concepts.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, Configuration Management, System and Services Acquisition, and System Integrity assurance concepts.
 
 **OASPS extension:** Reproducible or equivalent build identity for rights-relevant surveillance components; specialist validation is required before v1.0.
 
@@ -377,7 +378,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Signed artifact and configuration identities, deployment attestations, jurisdiction mapping, change history, verifier procedure, and independent spot checks.
 
-**Recognized basis:** NIST SP 800-53 Configuration Management, assessment, acquisition, and system-integrity concepts.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, Configuration Management, assessment, acquisition, and system-integrity concepts.
 
 **OASPS extension:** Jurisdiction-specific production identity for rights-relevant code and configuration; this is a deliberately strict proposal requiring specialist review.
 
@@ -391,7 +392,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Immutable document archive, effective dates, signed or hashed versions, machine-readable changelog, deployment-status vocabulary, and correspondence to local configuration.
 
-**Recognized basis:** NIST SP 800-53 Configuration Management and accountability concepts; ISO/IEC 27701:2025 continual-improvement and governance principles.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, Configuration Management and accountability concepts; ISO/IEC 27701:2025 continual-improvement and governance principles.
 
 **OASPS extension:** Treats public documentation integrity and deployment-state language as auditable rights-relevant controls.
 
@@ -405,7 +406,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Disclosure policy, safe-harbor terms, independent test scope, findings, remediation records, retest results, and a public summary that does not expose exploitable details.
 
-**Recognized basis:** NIST SP 800-53 System and Information Integrity, Assessment/Authorization/Monitoring, and acquisition assurance concepts.
+**Recognized basis:** NIST SP 800-53 Rev. 5, Release 5.2.0, System and Information Integrity, Assessment/Authorization/Monitoring, and acquisition assurance concepts.
 
 **OASPS extension:** Connects adversarial testing and remediation to rights-relevant safeguards as well as conventional cybersecurity.
 
@@ -421,7 +422,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Statute, ordinance, public meeting record, approved policy, capability and risk disclosure, vote or delegated authorization, and records of later material-change review.
 
-**Recognized basis:** Governance and accountability principles in Convention 108+, ISO/IEC 27701:2025, NIST Privacy Framework, and ALPR policy guidance.
+**Recognized basis:** Governance and accountability principles in Convention 108+, ISO/IEC 27701:2025, NIST Privacy Framework 1.0, and ALPR policy guidance.
 
 **OASPS extension:** Capability-specific democratic authorization and renewed review for material expansion.
 
@@ -449,7 +450,7 @@ Recognized bases are interpretive anchors, not claims of formal conformity. See 
 
 **Expected proof:** Contract clause, auditor access rights, confidentiality safeguards, dispute process, records-disclosure treatment, and evidence that qualified review can occur.
 
-**Recognized basis:** General accountability and demonstrable-control principles in ISO/IEC 27701:2025, NIST Privacy Framework, and Convention 108+.
+**Recognized basis:** General accountability and demonstrable-control principles in ISO/IEC 27701:2025, NIST Privacy Framework 1.0, and Convention 108+.
 
 **OASPS extension:** An explicit procurement limit on trade-secret objections; this requires procurement and public-law review.
 

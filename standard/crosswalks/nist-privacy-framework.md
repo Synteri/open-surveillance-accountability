@@ -1,8 +1,12 @@
 # Crosswalk: NIST Privacy Framework 1.0
 
-**Recognized source:** NIST Privacy Framework 1.0, registered as `SRC-0001`.
+**Baseline:** NIST, *NIST Privacy Framework: A Tool for Improving Privacy Through Enterprise Risk Management, Version 1.0*, published 2020-01-16 (`SRC-0001`).
+**Tracked draft, not baseline:** NIST Privacy Framework 1.1 Initial Public Draft (CSWP 40), dated 2025-04-14 (`SRC-0008`).
+**Last reviewed:** 2026-08-14
 
-The NIST Privacy Framework is a voluntary tool for identifying and managing privacy risk. This draft mapping uses its high-level Functions—Identify-P, Govern-P, Control-P, Communicate-P, and Protect-P—and does not claim that NIST contains OASPS-specific surveillance requirements.
+<!-- oasps-citations:start -->
+NIST Privacy Framework 1.0 remains this crosswalk's stable baseline. NIST's CSRC publication page identifies 1.1 as an Initial Public Draft, so OASPS tracks it for a future update but does not treat it as final or use it as the normative mapping baseline. This mapping uses the 1.0 high-level Functions—Identify-P, Govern-P, Control-P, Communicate-P, and Protect-P—and does not claim that NIST contains OASPS-specific surveillance requirements. [SRC-0001, SRC-0008]
+<!-- oasps-citations:end -->
 
 | NIST Privacy Framework concept | Related OASPS requirements | OASPS surveillance-specific extension |
 |---|---|---|
@@ -23,6 +27,6 @@ The NIST Privacy Framework is a voluntary tool for identifying and managing priv
 
 ## OASPS additions requiring separate validation
 
-NIST Privacy Framework 1.0 does not by itself establish OASPS's exact requirements for public source access, reproducible builds, cryptographic deployment attestation, privacy-preserving logs of prohibited attempts, complete vendor-access observability, democratic authorization, or automatic suspension. Those are surveillance-specific OASPS proposals that require policy, public-law, and technical review.
+NIST Privacy Framework 1.0 does not by itself establish OASPS's exact requirements for public inspectability, the restricted-review exception test, reproducible builds, cryptographic deployment attestation, privacy-preserving logs of prohibited attempts, complete vendor-access observability, democratic authorization, or automatic suspension. Those are surveillance-specific OASPS proposals that require policy, public-law, and technical review.
 
 This crosswalk is not a NIST conformity assessment.

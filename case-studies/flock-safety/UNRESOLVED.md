@@ -56,11 +56,19 @@ These are current evidence targets, not negative findings. Any next action must 
 - What did Bishop Fox test, what findings were confirmed, what was remediated, and what was retested?
 - Did the review cover rights-relevant safeguards or conventional security only?
 
+<!-- oasps-citations:start -->
+
 The available source is a vendor announcement and does not supply the independent report. [SRC-0023]
+
+<!-- oasps-citations:end -->
 
 ### Unretrieved safeguards announcement
 
+<!-- oasps-citations:start -->
+
 The August 13, 2026 safeguards article was referenced by the Notion research record and its title and date were visible through Flock navigation, but direct retrieval failed during the repository build. Specific rollout claims that depend only on that page are withheld pending a recoverable copy. [SRC-0011]
+
+<!-- oasps-citations:end -->
 
 ## Fairfield and Connecticut evidence
 
@@ -76,7 +84,11 @@ The August 13, 2026 safeguards article was referenced by the Notion research rec
 - What outbound and inbound sharing relationships are active now?
 - What written approvals and Connecticut-specific restrictions govern them?
 
+<!-- oasps-citations:start -->
+
 The parent Notion research pass reported indexed Wilton and Windsor portal listings for Fairfield, but the portal content was not directly re-retrievable during the repository build. The relationship is therefore an unresolved lead rather than an established current fact. [SRC-0030, SRC-0031]
+
+<!-- oasps-citations:end -->
 
 ### Current policy, searches, audits, and portal
 
@@ -85,7 +97,11 @@ The parent Notion research pass reported indexed Wilton and Windsor portal listi
 - What is the current Transparency Portal and public Search Audit URL?
 - What audit history is public versus retained internally?
 
+<!-- oasps-citations:start -->
+
 The former page reported to WFSB returned 404, and the 2026 reporting described a pending records response. That is a discoverability and evidence gap, not proof that no policy, portal, or compliant control exists. [SRC-0034, SRC-0036]
+
+<!-- oasps-citations:end -->
 
 ### Connecticut implementation
 

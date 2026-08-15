@@ -10,6 +10,23 @@ All notable changes to the standard, repository-wide method, and public evidence
 - Fairfield current-state evidence, voluntary adversarial review, and technical feasibility review before any public-draft release.
 - No public tag, GitHub Release, Pages site, or external announcement has been authorized by this changelog entry.
 
+## [0.3.0-draft.1] - 2026-08-14
+
+### Remediated
+
+- Made public inspectability the default in OASPS-E01 for rights-relevant schemas, logic, semantics, behaviors, and safeguard evidence.
+- Limited restricted auditor-only review to temporary, component-specific exceptions satisfying concrete-security-risk, independent-public-authority, public-notice, time-limit, complete-access, and public-reporting conditions.
+- Added the `Historical` implementation state and explicit semantic justification fields for verified facts, deployment, applicability, binding obligations, and responsible-actor overrides.
+- Added retrieval-status, exact-timestamp, effective-date, local-snapshot, and verifiable SHA-256 metadata without inventing unavailable values or adding third-party snapshots.
+- Replaced exact-tree validation with an extensible supported-path inventory, full requirement-block and matrix-invariant checks, repository-wide citation and sensitive-content checks, and standard-library regression tests.
+- Documented deterministic citation-bounded sections and narrow controlled exceptions for genuinely nonfactual blocks.
+- Pinned recognized-framework crosswalk baselines and review dates without asserting certification, accreditation, formal conformity, or licensed ISO clause coverage.
+- Updated the Flock comparison against revised E01 without converting missing evidence into wrongdoing, noncompliance, or a claim that a safeguard is absent.
+
+### Status
+
+- Private remediation draft only. No public tag, release, merge, visibility change, Pages deployment, or external announcement is authorized by this entry.
+
 ## [0.2.0-draft.1] - 2026-08-14
 
 ### Added

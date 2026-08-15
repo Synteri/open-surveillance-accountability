@@ -51,10 +51,10 @@ Before opening a pull request:
 1. Keep the standard vendor-neutral and put product-specific findings in the appropriate case-study directory.
 2. Use existing controlled values and stable ID formats from `DATA-DICTIONARY.md`.
 3. Add every new source to `evidence/sources.csv` before citing its source ID.
-4. End consequential factual paragraphs in case-study narratives with supporting source IDs.
+4. Put consequential factual sections between `<!-- oasps-citations:start -->` and `<!-- oasps-citations:end -->`, and end each factual paragraph or list item in those sections with supporting source IDs. An immediately preceding `<!-- oasps-citation-exempt: reason -->` comment may exempt only a genuinely normative, methodological, editorial, question-only, or navigation block; see `AGENTS.md` for the controlled reasons.
 5. Preserve positive findings, source conflicts, and unresolved questions.
 6. Update the relevant changelog when meaning, evidence, or an assessment changes.
-7. Run `python scripts/validate.py` and report the result in the pull request.
+7. Run `python -m unittest discover -s tests -v` and `python scripts/validate.py`, and report both results in the pull request.
 
 ## Review and disposition
 

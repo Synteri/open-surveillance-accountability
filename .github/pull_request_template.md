@@ -35,7 +35,7 @@ What remains `Unknown`, `Partially verifiable`, customer-configurable, jurisdict
 - [ ] I added no raw plate data, personal travel records, unnecessary personal information, credentials, nonpublic operational material, or exploit instructions.
 - [ ] I did not rely on or describe unauthorized testing.
 - [ ] Every new source ID exists in `evidence/sources.csv` and directly supports the claim that cites it.
-- [ ] Consequential factual paragraphs in case-study narratives end with supporting source IDs.
+- [ ] Consequential factual sections use the documented citation markers, and every non-exempt factual paragraph or list item ends with supporting source IDs.
 - [ ] The change does not claim accreditation, certification, expert approval, formal outside-framework conformity, endorsement, or unsupported wrongdoing.
 - [ ] The change does not enable publication, GitHub Pages, deployment, tagging, release creation, or external posting.
 - [ ] I have the right to contribute the submitted material under CC BY 4.0 for content or MIT for code.
@@ -45,6 +45,7 @@ What remains `Unknown`, `Partially verifiable`, customer-configurable, jurisdict
 Run from the repository root and paste the outcome:
 
 ```text
+python -m unittest discover -s tests -v
 python scripts/validate.py
 ```
 

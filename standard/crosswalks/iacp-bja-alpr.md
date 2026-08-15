@@ -1,8 +1,11 @@
 # Crosswalk: IACP and BJA ALPR Guidance
 
-**Recognized sources:** IACP ALPR policy resources (`SRC-0005`) and the U.S. Bureau of Justice Assistance ALPR Privacy Impact Assessment / policy template materials (`SRC-0006`).
+**Baselines:** David J. Roberts and Meghann Casanova, *Automated License Plate Recognition Systems: Policy and Operational Guidance for Law Enforcement*, 2012, NCJ 239604, an NIJ-sponsored publication in the official Office of Justice Programs library (`SRC-0005`); and *License Plate Reader Policy Development Template for Use in Intelligence and Investigative Activities*, February 2017, developed through the Criminal Intelligence Coordinating Council partnership and published by the Bureau of Justice Assistance (`SRC-0006`).
+**Last reviewed:** 2026-08-14
 
-These sources are domain-specific professional and government guidance for law-enforcement ALPR use. They are not accreditation standards. They help test whether OASPS accounts for operational policy, training, access, dissemination, retention, auditing, privacy, civil rights, and civil liberties familiar to practitioners.
+<!-- oasps-citations:start -->
+These official primary publication records identify domain-specific professional and government guidance for law-enforcement ALPR use. They are not accreditation standards. They help test whether OASPS accounts for operational policy, training, access, dissemination, retention, auditing, privacy, civil rights, and civil liberties familiar to practitioners. [SRC-0005, SRC-0006]
+<!-- oasps-citations:end -->
 
 | Operational guidance area | Related OASPS requirements | OASPS surveillance-specific extension |
 |---|---|---|
@@ -18,4 +21,4 @@ These sources are domain-specific professional and government guidance for law-e
 
 The professional guidance helps prevent a technically elegant standard from ignoring day-to-day agency realities. OASPS should remain feasible for legitimate investigations while demanding evidence proportionate to the power of the system.
 
-OASPS's strongest additions—source/build/deployment identity, complete vendor-access logging, contract-to-policy consistency, and automatic restriction after material rights-relevant control failure—go beyond the operational policy scope of these resources and require separate validation.
+OASPS's strongest additions—public inspectability and its restricted-review exception test, source/build/deployment identity, complete vendor-access logging, contract-to-policy consistency, and automatic restriction after material rights-relevant control failure—go beyond the operational policy scope of these resources and require separate validation.

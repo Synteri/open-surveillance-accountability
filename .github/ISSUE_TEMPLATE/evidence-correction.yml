@@ -39,17 +39,15 @@ body:
     id: source_url
     attributes:
       label: Supporting source URL
-      description: Prefer a primary, stable, lawfully public source or public archive URL.
+      description: Prefer a primary, stable, lawfully public source or public archive URL. If no URL exists, leave this blank and explain below how the record can be lawfully verified.
       placeholder: "https://..."
-    validations:
-      required: true
 
   - type: textarea
     id: source_details
     attributes:
       label: Source details and limits
-      description: Include title, publisher, publication or record date, access date, jurisdiction, and what the source does and does not establish.
-      placeholder: "Accessed YYYY-MM-DD. This record establishes... It does not establish..."
+      description: Include title, publisher, publication or record date, access date, jurisdiction, what the source does and does not establish, and a lawful verification route when no public URL exists.
+      placeholder: "Accessed YYYY-MM-DD. This record can be lawfully verified by... It establishes... It does not establish..."
     validations:
       required: true
 

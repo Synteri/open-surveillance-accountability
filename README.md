@@ -8,7 +8,7 @@ If government can see the public through a surveillance system, the public shoul
 
 Public agencies increasingly use systems that can collect observations, connect them across time or place, share them with other organizations, and preserve them for investigations. A resident should not need to be a privacy lawyer or software engineer to understand the rules that govern those systems.
 
-OASPS turns that concern into specific, testable requirements. It asks for clear data inventories, limited purposes, attributable access, durable audits, disciplined retention and deletion, independently reviewable safeguards, public authorization, and meaningful remedies. It also assigns each responsibility to the actor that can actually satisfy it: vendor, agency, legislature, court, independent oversight body, or a combination of them.
+OASPS turns that concern into specific, testable requirements. It asks for clear data inventories, limited purposes, attributable access, durable audits, disciplined retention and deletion, public inspectability of rights-relevant safeguards by default, public authorization, and meaningful remedies. A component may be temporarily restricted to qualified independent reviewers only under a narrow, publicly governed security exception—not merely because it is proprietary. OASPS also assigns each responsibility to the actor that can actually satisfy it: vendor, agency, legislature, court, independent oversight body, or a combination of them.
 
 ## What OASPS is—and is not
 
@@ -28,11 +28,13 @@ OASPS is not:
 
 ## Current draft
 
-This repository packages **OASPS `0.2.0-draft.1`** for private bootstrap review. It has not been approved for public release. The standard is intentionally separated from its first case study: [STANDARD.md](STANDARD.md) states requirements for any public surveillance system, while [the Flock Safety case study](case-studies/flock-safety/README.md) evaluates only the Flock ALPR ecosystem described in its [scope](case-studies/flock-safety/SCOPE.md).
+This repository packages **OASPS `0.3.0-draft.1`** for private bootstrap review. It has not been approved for public release. The standard is intentionally separated from its first case study: [STANDARD.md](STANDARD.md) states requirements for any public surveillance system, while [the Flock Safety case study](case-studies/flock-safety/README.md) evaluates only the Flock ALPR ecosystem described in its [scope](case-studies/flock-safety/SCOPE.md).
 
+<!-- oasps-citations:start -->
 The current evidence supports a deliberately balanced conclusion: Flock documents and appears to implement several meaningful safeguards, including attributable searches, purpose selection, configurable sharing, transparency tools, and deletion controls. Important rights-relevant layers nevertheless remain dependent on vendor or agency statements rather than a complete, independently verifiable chain from written promise to deployed behavior. This is an evidence and observability gap, not evidence of misconduct. [SRC-0010, SRC-0016, SRC-0018, SRC-0019, SRC-0021]
 
 Fairfield, Connecticut is the first local implementation record. Public municipal records document the package approved in 2024, including its cost, product mix, and contracted retention period. The current 2026 contract, configuration, retention, sharing, search history, and audit surface are not established by the evidence collected here and remain explicitly unknown. See [the Fairfield record](case-studies/flock-safety/jurisdictions/connecticut/fairfield.md) for the claim-by-claim distinction. [SRC-0032, SRC-0033, SRC-0034, SRC-0036]
+<!-- oasps-citations:end -->
 
 ## Start here
 

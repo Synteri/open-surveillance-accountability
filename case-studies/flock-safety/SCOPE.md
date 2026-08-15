@@ -2,7 +2,7 @@
 
 ## Included
 
-The `0.2.0-draft.1` case study evaluates the Flock Safety ALPR ecosystem where the current source record permits, including:
+The `0.3.0-draft.1` case study evaluates the Flock Safety ALPR ecosystem where the current source record permits, including:
 
 - ALPR image capture and observation data;
 - plate interpretation, confidence information, and vehicle descriptors;
@@ -31,7 +31,11 @@ The first case study does not evaluate:
 - the lawfulness of a particular investigation or search;
 - comparative scoring against other surveillance vendors.
 
+<!-- oasps-citations:start -->
+
 Fairfield's 2024 procurement included products beyond the ALPR scope. Those products are named only to define the local contract accurately; they are not silently folded into the Flock ALPR assessment. [SRC-0033]
+
+<!-- oasps-citations:end -->
 
 ## Subjects and jurisdictions
 
