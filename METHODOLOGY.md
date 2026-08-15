@@ -217,4 +217,4 @@ Public camera locations are referenced only when already lawfully public and gen
 
 ## Method limitations
 
-OASPS `0.3.0-draft.1` has not completed independent privacy, public-law, or software-assurance review. Its recognized-framework crosswalks are interpretive and do not establish formal conformity. The Flock case study is a dated evidence review of a defined ALPR scope, not an evaluation of every Flock product or every customer deployment.
+OASPS `0.4.0-draft.1` has not completed independent privacy, public-law, or software-assurance review. Its recognized-framework crosswalks are interpretive and do not establish formal conformity. The Flock case study is a dated evidence review of a defined ALPR scope, not an evaluation of every Flock product or every customer deployment. The Fairfield inventory is a system-discovery record, not a requirement-by-requirement assessment.

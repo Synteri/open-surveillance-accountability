@@ -1,6 +1,6 @@
 # Open Accountability Standard for Public Surveillance Systems
 
-**Version:** OASPS `0.3.0-draft.1`
+**Version:** OASPS `0.4.0-draft.1`
 
 **Status:** Open public working draft
 

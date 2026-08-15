@@ -4,15 +4,28 @@ All notable changes to the standard, repository-wide method, and public evidence
 
 ## [Unreleased]
 
-### Changed
-
-- Updated current-status wording to identify `0.3.0-draft.1` as an open public working draft without changing requirements, findings, or assessments.
-- Added a root overview of the repository's split CC BY 4.0 and MIT licensing.
-
 ### Pending
 
-- Fairfield current-state evidence, public adversarial review, and technical feasibility review before any later tagged release.
+- Fairfield evidence maintenance, public adversarial review, and technical feasibility review before any later tagged release.
 - No public tag, GitHub Release, Pages site, or external announcement has been authorized by this changelog entry.
+
+## [0.4.0-draft.1] - 2026-08-15
+
+### Added
+
+- Added a vendor-neutral Fairfield, Connecticut jurisdiction-level inventory with six distinct system records and four source-led system pages.
+- Added primary municipal law, state approval, an approved plan, an executed traffic-enforcement contract, current police policy, procurement and financial records, municipal meeting records, and bounded reporting to the stable source register.
+- Added a documented jurisdiction-inventory CSV schema, stable `CT-FAIRFIELD-SYS-###` identifiers, source resolution, incomplete-state requirements, and regression tests.
+
+### Changed
+
+- Advanced active working-draft references to `0.4.0-draft.1` without changing the OASPS requirements.
+- Updated repository navigation and the roadmap to test Fairfield's jurisdiction-level model before expansion elsewhere.
+- Cross-linked the existing Fairfield/Flock record without changing the Flock matrix, claim findings, evidence labels, assessments, or unresolved conclusions.
+
+### Status
+
+- Open public working draft only. No tag, GitHub Release, merge, Pages deployment, external outreach, or announcement is authorized by this entry.
 
 ## [0.3.0-draft.1] - 2026-08-14
 

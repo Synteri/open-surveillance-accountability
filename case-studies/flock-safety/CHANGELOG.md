@@ -8,6 +8,12 @@ All findings are dated evidence snapshots. A correction to the case study may pr
 - Await a recoverable copy of the August 13, 2026 Flock safeguards announcement before relying on its specific rollout claims.
 - Await independent rights-focused review of audit coverage, deletion paths, secondary use, build identity, and production attestation.
 
+## 0.4.0-draft.1 — 2026-08-15
+
+- Cross-linked the Fairfield Flock implementation record to the new jurisdiction-level inventory.
+- Updated active case-study version references only.
+- Made no changes to `matrix.csv`, claim findings, evidence labels, assessments, implementation states, or the existing Fairfield/Flock evidence conclusion.
+
 ## 0.3.0-draft.1 — 2026-08-14
 
 - Recompared the existing Flock evidence against revised OASPS-E01, which makes public inspectability the default and permits restricted auditor-only review only under a complete temporary-exception test.

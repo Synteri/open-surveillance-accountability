@@ -1,6 +1,6 @@
 # Roadmap
 
-OASPS `0.3.0-draft.1` is an open public working draft released for review, correction, and good-faith criticism. It is not a stable standard, certification, legal determination, or finding of wrongdoing. This roadmap lists evidence and review work; it is not a promise that a tagged release, social post, additional case study, or website will occur.
+OASPS `0.4.0-draft.1` is an open public working draft released for review, correction, and good-faith criticism. It is not a stable standard, certification, legal determination, or finding of wrongdoing. This roadmap lists evidence and review work; it is not a promise that a tagged release, social post, additional case study, or website will occur.
 
 ## 1. Complete the private bootstrap and public-draft preparation
 
@@ -12,7 +12,7 @@ OASPS `0.3.0-draft.1` is an open public working draft released for review, corre
 - [x] Complete independent review of the `0.3.0-draft.1` remediation, including validator enforcement, evidence metadata, matrix semantics, exact standards baselines, and the revised public-inspectability rule.
 - [x] Obtain explicit owner approval to change repository visibility and publish the open public working draft.
 
-## 2. Establish Fairfield's current state
+## 2. Establish Fairfield's current Flock ALPR state
 
 The repository distinguishes Fairfield's documented 2024 board approval and order-form terms presented for approval from its still-unresolved execution, production configuration, and current 2026 operation. Before a Fairfield-focused public launch, seek lawful, current evidence for:
 
@@ -66,11 +66,15 @@ For any separately approved public sharing, prepare a low-drama, evidence-forwar
 
 Whether to post on Facebook or any other external channel is a separate explicit owner decision. Repository creation does not authorize external posting.
 
-## 7. Expand only after the first case study is stable
+## 7. Test the jurisdiction-level inventory before expanding it
 
-- Consider additional Connecticut jurisdictions and then a small number of jurisdictions with strong public evidence.
-- Test whether OASPS remains fair and usable across different vendors, agency sizes, laws, and deployment models before any broader comparison.
-- Do not create a vendor scoring leaderboard or expand beyond the Flock ALPR case study merely to appear comprehensive.
+- [x] Add Fairfield as the first jurisdiction-level inventory while preserving the separate Flock vendor study.
+- [x] Keep distinct local technologies, vendors, purposes, evidence labels, and implementation states separate, without prematurely scoring every system.
+- [ ] Review whether Fairfield's inventory schema and system-page structure make proposals, historical deployments, current policy, and current operation understandable to residents.
+- [ ] Resolve the highest-value Fairfield evidence gaps where public material later becomes available, without automatically submitting records requests or publishing sensitive locations.
+- [ ] Consider another jurisdiction only after the Fairfield model proves understandable, maintainable, and evidence-bounded.
+- [ ] Test whether OASPS remains fair and usable across different vendors, agency sizes, laws, and deployment models before any broader comparison.
+- Do not create a vendor scoring leaderboard or expand merely to appear comprehensive.
 
 ## 8. Optional website
 
@@ -78,4 +82,4 @@ GitHub's Markdown rendering is sufficient for the first public draft. Consider a
 
 ## 9. Deferred policy questions
 
-The `0.3.0-draft.1` remediation does not decide a complete material-failure taxonomy, individual notice and contestability rules, heightened authorization tiers for intrusive searches, or recurring democratic sunset and necessity review. These remain candidates for separately scoped public-law, civil-liberties, public-safety, and technical review rather than silent additions to the current draft.
+The `0.4.0-draft.1` working draft does not decide a complete material-failure taxonomy, individual notice and contestability rules, heightened authorization tiers for intrusive searches, or recurring democratic sunset and necessity review. These remain candidates for separately scoped public-law, civil-liberties, public-safety, and technical review rather than silent additions to the current draft.

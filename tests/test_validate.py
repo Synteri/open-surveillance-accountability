@@ -18,6 +18,7 @@ from scripts.validate import (
     CORE_FILES,
     DEFAULT_ROOT,
     EXPECTED_REQUIREMENT_IDS,
+    INVENTORY_HEADER,
     MATRIX_HEADER,
     SOURCE_HEADER,
     Validator,
@@ -54,7 +55,7 @@ class RepositoryFixture:
             "__pycache__/\n*.py[cod]\n.venv/\n.vscode/\n.coverage\nhtmlcov/\n"
             "evidence/local-*.md\n",
         )
-        self.write("VERSION", "0.3.0-draft.1\n")
+        self.write("VERSION", "0.4.0-draft.1\n")
         self.write("CITATION.cff", "cff-version: 1.2.0\nlicense: CC-BY-4.0\n")
         for relative_path in CITATION_REQUIRED_FILES:
             self.write(
@@ -66,6 +67,7 @@ class RepositoryFixture:
             )
         self.write("STANDARD.md", self.standard_text())
         self.write_sources([self.source_row()])
+        self.write_inventory([self.inventory_row()])
         self.write_matrix(
             self.global_matrix_rows(), complete_global_coverage=False
         )
@@ -166,6 +168,32 @@ class RepositoryFixture:
             )
         return row
 
+    @staticmethod
+    def inventory_row(**updates: str) -> dict[str, str]:
+        row = {field: "" for field in INVENTORY_HEADER}
+        row.update(
+            {
+                "system_id": "CT-FAIRFIELD-SYS-001",
+                "system_name": "Fixture jurisdiction system",
+                "vendor": "Fixture vendor",
+                "operator": "Fixture agency",
+                "technology_category": "Fixture camera technology",
+                "jurisdiction": "Fairfield, Connecticut",
+                "public_purpose": "A bounded public-safety purpose.",
+                "documented_capabilities": "A dated record documents image capture.",
+                "evidence_label": "Verified",
+                "implementation_state": "Deployed now",
+                "last_verified": "2026-08-15",
+                "source_ids": "SRC-0001",
+                "authorization_or_policy": "A dated public authorization record.",
+                "retention_or_data_use": "A bounded public retention rule.",
+                "sharing_or_access": "A bounded public access rule.",
+                "notes": "Fixture inventory record.",
+            }
+        )
+        row.update(updates)
+        return row
+
     def global_matrix_rows(self) -> list[dict[str, str]]:
         return [
             self.matrix_row(
@@ -202,6 +230,11 @@ class RepositoryFixture:
             )
             rows = completed_rows
         self._write_csv("case-studies/flock-safety/matrix.csv", header, rows)
+
+    def write_inventory(
+        self, rows: list[dict[str, str]], header=INVENTORY_HEADER
+    ) -> None:
+        self._write_csv("case-studies/fairfield-connecticut/inventory.csv", header, rows)
 
     def _write_csv(self, relative_path: str, header, rows: list[dict[str, str]]) -> None:
         buffer = io.StringIO(newline="")
@@ -288,7 +321,7 @@ class ValidatorTests(unittest.TestCase):
 
     def test_wrong_version_fails(self) -> None:
         self.fixture.write("VERSION", "0.2.0-draft.1\n")
-        self.assert_error("0.3.0-draft.1")
+        self.assert_error("0.4.0-draft.1")
 
     def test_citation_metadata_uses_single_content_license(self) -> None:
         self.fixture.write(
@@ -311,6 +344,112 @@ class ValidatorTests(unittest.TestCase):
         header[-1], header[-2] = header[-2], header[-1]
         self.fixture.write_matrix([self.fixture.matrix_row()], header)
         self.assert_error("header must be exactly, in order")
+
+    def test_inventory_header_order_is_exact(self) -> None:
+        header = list(INVENTORY_HEADER)
+        header[-1], header[-2] = header[-2], header[-1]
+        self.fixture.write_inventory([self.fixture.inventory_row()], header)
+        self.assert_error("header must be exactly, in order")
+
+    def test_inventory_schema_literal_is_stable(self) -> None:
+        self.assertEqual(
+            INVENTORY_HEADER,
+            (
+                "system_id",
+                "system_name",
+                "vendor",
+                "operator",
+                "technology_category",
+                "jurisdiction",
+                "public_purpose",
+                "documented_capabilities",
+                "evidence_label",
+                "implementation_state",
+                "last_verified",
+                "source_ids",
+                "authorization_or_policy",
+                "retention_or_data_use",
+                "sharing_or_access",
+                "unresolved_question",
+                "next_action",
+                "notes",
+            ),
+        )
+
+    def test_inventory_ids_must_be_formatted_and_unique(self) -> None:
+        self.fixture.write_inventory(
+            [
+                self.fixture.inventory_row(system_id="FAIRFIELD-1"),
+                self.fixture.inventory_row(),
+                self.fixture.inventory_row(),
+            ]
+        )
+        joined = self.assert_error("system_id must match CT-FAIRFIELD-SYS-###")
+        self.assertIn("appears 2 times", joined)
+
+    def test_inventory_controlled_values_dates_and_sources(self) -> None:
+        self.fixture.write_inventory(
+            [
+                self.fixture.inventory_row(
+                    evidence_label="Reported",
+                    implementation_state="Maybe current",
+                    last_verified="2026-02-30",
+                    source_ids="SRC-9999",
+                )
+            ]
+        )
+        joined = self.assert_error("'evidence_label' is not an allowed value")
+        self.assertIn("'implementation_state' is not an allowed value", joined)
+        self.assertIn("real ISO calendar date", joined)
+        self.assertIn("is missing from evidence/sources.csv", joined)
+
+    def test_inventory_jurisdiction_is_fairfield(self) -> None:
+        self.fixture.write_inventory(
+            [self.fixture.inventory_row(jurisdiction="Boston, Massachusetts")]
+        )
+        self.assert_error("jurisdiction must be exactly 'Fairfield, Connecticut'")
+
+    def test_deployed_inventory_requires_a_resolved_source(self) -> None:
+        self.fixture.write_inventory(
+            [
+                self.fixture.inventory_row(
+                    evidence_label="Unknown",
+                    implementation_state="Deployed now",
+                    source_ids="",
+                    unresolved_question="What public record establishes current deployment?",
+                    next_action="Review a later-published current agency inventory.",
+                )
+            ]
+        )
+        self.assert_error(
+            "source_ids is required for non-Unknown evidence or Deployed now state"
+        )
+
+    def test_incomplete_inventory_requires_question_and_next_action(self) -> None:
+        for evidence_label, implementation_state in (
+            ("Partially verifiable", "Deployed now"),
+            ("Verified", "Historical"),
+        ):
+            with self.subTest(
+                evidence_label=evidence_label,
+                implementation_state=implementation_state,
+            ):
+                self.fixture.write_inventory(
+                    [
+                        self.fixture.inventory_row(
+                            evidence_label=evidence_label,
+                            implementation_state=implementation_state,
+                            unresolved_question="",
+                            next_action="",
+                        )
+                    ]
+                )
+                joined = self.assert_error(
+                    "unresolved_question is required when current state is incomplete"
+                )
+                self.assertIn(
+                    "next_action is required when current state is incomplete", joined
+                )
 
     def test_source_required_fields_and_id_format(self) -> None:
         self.fixture.write_sources([self.fixture.source_row(source_id="SRC-12", publisher="")])
@@ -752,14 +891,26 @@ class ValidatorTests(unittest.TestCase):
         self.assert_error("source token 'SRC-' is malformed")
 
     def test_designated_factual_file_requires_citation_markers(self) -> None:
-        self.fixture.write(
+        for relative_path in (
             "case-studies/flock-safety/FINDINGS.md",
-            "# Findings\n\nA factual narrative without citation boundaries.\n",
-        )
-        self.assert_error(
-            "designated evidence-bearing narrative must contain at least one "
-            "balanced citation section"
-        )
+            "case-studies/fairfield-connecticut/systems/automated-traffic-enforcement.md",
+        ):
+            with self.subTest(relative_path=relative_path):
+                self.fixture.write(
+                    relative_path,
+                    "# Findings\n\nA factual narrative without citation boundaries.\n",
+                )
+                self.assert_error(
+                    "designated evidence-bearing narrative must contain at least one "
+                    "balanced citation section"
+                )
+                self.fixture.write(
+                    relative_path,
+                    "# Evidence\n\n"
+                    "<!-- oasps-citations:start -->\n\n"
+                    "A factual paragraph. [SRC-0001]\n\n"
+                    "<!-- oasps-citations:end -->\n",
+                )
 
     def test_marked_citation_sections_accept_citations_and_exemptions(self) -> None:
         self.fixture.write(
