@@ -2,7 +2,8 @@
 
 **Version:** OASPS `0.3.0-draft.1`
 
-**Status:** Open draft for private bootstrap review  
+**Status:** Open public working draft
+
 **Last substantive research review:** 2026-08-14
 
 OASPS is a proposed vendor-neutral accountability standard. It is not accredited, certified, expert-approved, or a legal determination. Its requirements are written so residents, public bodies, vendors, and independent reviewers can identify the responsible actor and the evidence that would demonstrate implementation.

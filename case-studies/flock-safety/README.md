@@ -3,7 +3,7 @@
 **Case-study version:** `0.3.0-draft.1`
 
 **Evidence last reviewed:** 2026-08-14  
-**Status:** Open draft for private bootstrap review
+**Status:** Open public working draft
 
 ## Scope
 
