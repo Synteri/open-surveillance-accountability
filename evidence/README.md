@@ -4,7 +4,7 @@
 
 ## What a source row means
 
-A source row records identity, retrieval metadata, scope, and limitations. Inclusion does not endorse the source or prove every statement it contains. A vendor page supports what the vendor publicly states; an old contract supports the contracted state at that time; a directly retrieved transparency portal supports only the fields exposed at the recorded check. Indexed-only portal material is an unresolved lead unless the relevant content is recovered in a durable lawful form.
+A source row records identity, retrieval metadata, scope, and limitations. Inclusion does not endorse the source or prove every statement it contains. A vendor page supports what the vendor publicly states; an executed historical contract supports the terms it contains at that time but not a later production configuration; a municipal meeting packet containing an order form supports the terms presented for approval unless execution evidence exists; and a directly retrieved transparency portal supports only the fields exposed at the recorded check. Indexed-only portal material is an unresolved lead unless the relevant content is recovered in a durable lawful form.
 
 Source IDs are permanent. If a URL changes, becomes unavailable, or is superseded, keep the original ID and document the change rather than silently reassigning it.
 

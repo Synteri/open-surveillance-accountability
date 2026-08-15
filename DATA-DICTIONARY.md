@@ -49,6 +49,8 @@ Designated factual sections in repository narratives begin with `<!-- oasps-cita
 
 An intentionally non-factual block inside a designated section may be exempted only by placing `<!-- oasps-citation-exempt: reason -->` immediately before it. The controlled reasons are `normative`, `methodological`, `editorial`, `question`, and `navigation`. The annotation applies only to the next paragraph or list block and must never exempt a factual claim. Headings and the boundary comments themselves are not paragraphs.
 
+CI maintains an explicit manifest of the current evidence-bearing narrative files and requires at least one balanced citation section in each. It validates marked paragraphs, contiguous list items, controlled exemptions, and source-ID resolution, but does not infer whether unmarked prose is factual, prove that section boundaries capture every factual claim, or assess substantive source support. Those completeness and sufficiency judgments remain part of human pull-request review; files outside the manifest need no marker solely because they are Markdown.
+
 ## `evidence/sources.csv`
 
 Columns appear in this exact order:
@@ -127,14 +129,14 @@ claim_id,requirement_id,subject,jurisdiction,responsible_actor,actor_override_re
 | `evidence_label` | Yes | Confidence in the underlying fact. | Controlled values below. |
 | `verified_fact` | Conditional | Exact fact directly established by the cited evidence. | Required for `Verified`; distinguish a verified published statement or document comparison from independently verified product behavior. Blank for other labels. |
 | `assessment` | Yes | Comparison with the requirement. | Controlled values below. |
-| `known_fact_basis` | Conditional | Narrow basis for a definitive assessment made despite an `Unknown` evidence label. | Required only when `Unknown` is paired with `Meets`, `Partly meets`, or `Does not meet`; identify the separately known fact sufficient for that limited assessment. Blank for `Unknown` or `Not applicable` assessments and for all other evidence labels. |
+| `known_fact_basis` | Conditional | Narrow basis for a definitive assessment made despite an `Unknown` evidence label. | Required only when `Unknown` is paired with `Meets`, `Partly meets`, or `Does not meet`; identify the separately known fact sufficient for that limited assessment and cite at least one resolved source ID. Blank for `Unknown` or `Not applicable` assessments and for all other evidence labels. |
 | `implementation_state` | Yes | Timing or configurability of behavior. | Controlled values below. |
 | `deployment_evidence_state` | Conditional | Controlled indicator that the cited `deployment_basis` affirmatively supports current deployment within the row's scope. | The only nonblank value is `Affirmative`. Required exactly for `Deployed now` and blank for every other implementation state. It records the evidence posture and does not imply independent verification. |
 | `historical_as_of` | Conditional | Date of the past-only state represented by a `Historical` row. | Required for `Historical` and blank otherwise; ISO date. It is not the later evidence-check date. |
 | `applicability_reason` | Conditional | Why comparison with the requirement is not meaningful for this row. | Required for `Not applicable` and blank otherwise. A context row must identify what it does and does not assess. |
 | `binding_obligation` | Conditional | Binding law, contract, order, or other enforceable duty violated by a `Noncompliant` finding. | Required for `Noncompliant`, supported by `source_ids`, and blank otherwise. `Does not meet` the proposed OASPS standard is not legal noncompliance. |
 | `last_verified` | Yes | Date the cited evidence was last checked. | ISO date. It is not necessarily the behavior or publication date. |
-| `source_ids` | Conditional | Supporting source identifiers. | Required for any row not labeled `Unknown`; pipe-separated and resolvable. An `Unknown` row may still cite evidence that establishes only the gap. |
+| `source_ids` | Conditional | Supporting source identifiers. | Required for any row not labeled `Unknown` and whenever `known_fact_basis` is required; pipe-separated and resolvable. An ordinary `Unknown` evidence plus `Unknown` assessment row may omit sources, or may cite evidence that establishes only the gap. |
 | `unresolved_question` | Yes | Exact fact or proof still missing. | Use `None within current scope` only when the row genuinely has no material open question. |
 | `next_action` | Yes | Lawful, proportionate evidence step. | Must not direct unauthorized testing, contact, or records submission by an automated agent. |
 | `notes` | No | Scope qualifications, legal-floor distinction, conflicts, or history. | Avoid unsupported conclusions. |
@@ -183,7 +185,7 @@ Allowed nonblank `deployment_evidence_state` value:
 - `deployment_basis` is present for every `Deployed now` row and blank for all other states.
 - `deployment_evidence_state` is exactly `Affirmative` for every `Deployed now` row and blank for all other states; it indicates that the cited `deployment_basis` affirmatively supports current-in-scope deployment without implying independent verification.
 - `verified_fact` is present for every `Verified` row and blank for all other evidence labels.
-- `known_fact_basis` is required only when `Unknown` evidence is paired with the definitive assessment `Meets`, `Partly meets`, or `Does not meet`; it is blank for every other combination.
+- `known_fact_basis` is required only when `Unknown` evidence is paired with the definitive assessment `Meets`, `Partly meets`, or `Does not meet`; that combination also requires at least one resolved `source_ids` value, and the field is blank for every other combination.
 - `historical_as_of` is present for every `Historical` row and blank for all other states.
 - `applicability_reason` is present for every `Not applicable` assessment and blank otherwise.
 - `binding_obligation` is present for every `Noncompliant` evidence label and blank otherwise.

@@ -17,19 +17,19 @@ Fairfield's Board of Selectmen considered and unanimously approved the Police De
 
 ### Cost, term, and renewal mechanics
 
-The 2024 procurement packet lists an annual recurring subtotal of **$110,000**, a 12-month initial term, a 24-month renewal term, and automatic renewal mechanics subject to the stated non-renewal process. Those terms show how continuation could occur; they do not prove that a renewal occurred or that the contract remains active in August 2026. [SRC-0033]
+The order form included in the board-approved 2024 meeting packet lists an annual recurring subtotal of **$110,000**, a 12-month initial term, a 24-month renewal term, and automatic renewal mechanics subject to the stated non-renewal process. Those terms were presented for approval; the packet does not independently establish that the displayed order form was executed, any production configuration, or current operation. The renewal language shows how continuation could occur; it does not prove renewal or current activity. [SRC-0033]
 
 ### Original product mix
 
-The 2024 order form lists FlockOS Advanced; 21 Falcon units; 4 Falcon Flex units; 8 Wing LPR units; 8 Wing VMS streams; 18 Wing Gateway 8-stream units; and 5 Condor PTZ units. The package was therefore broader than standalone ALPR cameras. OASPS `0.3.0-draft.1` evaluates only the ALPR-relevant subset and does not silently score the other video or platform functions. [SRC-0033]
+The order form included in the board-approved 2024 meeting packet lists FlockOS Advanced; 21 Falcon units; 4 Falcon Flex units; 8 Wing LPR units; 8 Wing VMS streams; 18 Wing Gateway 8-stream units; and 5 Condor PTZ units. The listed package was therefore broader than standalone ALPR cameras, but its listing does not establish execution or current operation. OASPS `0.3.0-draft.1` evaluates only the ALPR-relevant subset and does not silently score the other video or platform functions. [SRC-0033]
 
-### Contracted retention
+### Order-form retention term
 
-The order form specifies a **30-day retention period** for the 2024 contracted state. That is primary evidence of the historical customer-specific term and is stronger for that date than a generic vendor default. It does not establish Fairfield's current 2026 production setting. [SRC-0033]
+The order form included in the board-approved 2024 meeting packet lists a **30-day retention period** presented for approval. This verifies only what the order form states; it does not independently establish execution, production configuration, or current operation. Fairfield's current 2026 production setting remains unknown. [SRC-0033]
 
 ## Current 2026 evidence
 
-### Contract and production state
+### Execution, renewal, and production state
 
 The 2024 renewal language supports the possibility of continued service without a new full procurement cycle. No current invoice, purchase order, renewal, amendment, payment record, or active-system record in this source set establishes the present contract term or active product inventory. Current status is `Unknown`, not assumed active. [SRC-0032, SRC-0033]
 

@@ -10,7 +10,7 @@ OASPS does not calculate a single vendor score. Different responsibilities belon
 
 Each row in a case-study matrix evaluates one requirement against one defined subject and jurisdiction. A row must remain narrow enough that its evidence label and assessment do not hide materially different conditions.
 
-For example, a vendor's documented national retention default, a customer's contracted retention setting, and a current production configuration are three different facts. They may require three rows or a row that explicitly separates all three evidence layers.
+For example, a vendor's documented national retention default, a retention term listed in an order form, an executed customer agreement, and a current production configuration are different facts. They may require separate rows or a row that explicitly separates every evidence layer.
 
 ## Source hierarchy
 
@@ -22,7 +22,7 @@ Use the strongest available evidence in this order where practical:
 4. reproducible observation or authorized testing of public or customer-visible behavior;
 5. marketing material, only as evidence of what the publisher asserts.
 
-The order is a preference, not an automatic truth ranking. A signed 2024 contract is strong evidence of the 2024 contracted state but cannot establish the 2026 production configuration. A vendor technical page may accurately describe a platform capability but cannot, by itself, prove that a particular agency enabled it.
+The order is a preference, not an automatic truth ranking. A municipal meeting packet containing an order form is strong evidence of the terms presented for approval, but without execution evidence it cannot establish an executed agreement or a production configuration. A vendor technical page may accurately describe a platform capability but cannot, by itself, prove that a particular agency enabled it.
 
 ## Evidence labels
 
@@ -95,7 +95,7 @@ The `evidence_label` describes confidence in the underlying facts. The `assessme
 
 Examples:
 
-- A public contract can make a historical retention setting `Verified`, while the assessment against a short-retention requirement may be `Does not meet`.
+- An executed public contract can make a historical retention term `Verified`, while the assessment against a short-retention requirement may be `Does not meet`.
 - A meaningful deletion design may be `Partially verifiable` and `Partly meets` because public evidence does not cover every backup or replica.
 - A missing current configuration is `Unknown` and `Unknown`, not `Noncompliant`.
 
@@ -104,7 +104,7 @@ Examples:
 The matrix uses explicit fields to make cross-field reasoning reviewable rather than hiding it in free-form notes:
 
 - `verified_fact` states the exact fact directly established by cited evidence when the row uses `Verified`; it distinguishes a verified document or statement from independently verified product behavior.
-- `known_fact_basis` identifies the narrow, separately known fact sufficient for a definitive assessment when `Unknown` evidence is paired with `Meets`, `Partly meets`, or `Does not meet`. It is blank for every other combination.
+- `known_fact_basis` identifies the narrow, separately known fact sufficient for a definitive assessment when `Unknown` evidence is paired with `Meets`, `Partly meets`, or `Does not meet`. That combination requires at least one resolved `source_ids` value; `known_fact_basis` is blank for every other combination.
 - `deployment_basis` identifies affirmative evidence for `Deployed now`; it is not satisfied by a policy promise or a capability description alone.
 - `deployment_evidence_state` is the conditional controlled field `Affirmative` exactly when cited `deployment_basis` evidence supports current-in-scope deployment. It is blank for every other implementation state and does not imply independent verification.
 - `historical_as_of` records the ISO date established by a `Historical` row.
@@ -112,7 +112,7 @@ The matrix uses explicit fields to make cross-field reasoning reviewable rather 
 - `binding_obligation` identifies the specific applicable legal, contractual, or other enforceable duty required before `Noncompliant` may be used; the obligation must be supported by `source_ids`.
 - `actor_override_reason` explains why a case-study row assigns a different responsible actor from the corresponding standard requirement without reassigning the standard itself.
 
-These fields enforce several invariants. `Verified` requires `verified_fact`, which is blank for every other evidence label. `Unknown` evidence paired with `Meets`, `Partly meets`, or `Does not meet` requires `known_fact_basis`, which is blank for every other combination. `Deployed now` requires `deployment_evidence_state` to be exactly `Affirmative` and requires a nonblank `deployment_basis`; both fields are blank for every other implementation state. `Affirmative` means the cited basis supports current-in-scope deployment and does not imply independent verification. `Historical` requires `historical_as_of`, which is blank for every other state, and cannot imply current operation. `Not applicable` requires `applicability_reason`, which is blank for every other assessment. `Noncompliant` requires `binding_obligation`, which is blank for every other evidence label. An actor difference requires `actor_override_reason`, which is blank when the row and standard actors match. Blank required justification is not neutral evidence; when a required fact cannot be established, the row remains `Unknown` or uses the narrower supported label.
+These fields enforce several invariants. `Verified` requires `verified_fact`, which is blank for every other evidence label. `Unknown` evidence paired with `Meets`, `Partly meets`, or `Does not meet` requires `known_fact_basis` and at least one resolved `source_ids` value; `known_fact_basis` is blank for every other combination. An ordinary `Unknown` evidence plus `Unknown` assessment row remains source-optional. `Deployed now` requires `deployment_evidence_state` to be exactly `Affirmative` and requires a nonblank `deployment_basis`; both fields are blank for every other implementation state. `Affirmative` means the cited basis supports current-in-scope deployment and does not imply independent verification. `Historical` requires `historical_as_of`, which is blank for every other state, and cannot imply current operation. `Not applicable` requires `applicability_reason`, which is blank for every other assessment. `Noncompliant` requires `binding_obligation`, which is blank for every other evidence label. An actor difference requires `actor_override_reason`, which is blank when the row and standard actors match. Blank required justification is not neutral evidence; when a required fact cannot be established, the row remains `Unknown` or uses the narrower supported label.
 
 ## Documentation and implementation timing
 
@@ -150,6 +150,8 @@ Rules:
 - A factual claim without a recoverable source is removed from narrative findings or preserved as an explicit unresolved question.
 
 An intentionally nonfactual block inside a bounded section may be exempted only by an immediately preceding comment in the exact form `<!-- oasps-citation-exempt: reason -->`. The controlled reasons are `normative`, `methodological`, `editorial`, `question`, and `navigation`. The comment applies only to the next paragraph or list block. It cannot exempt a factual claim, and it cannot be used as a blanket exception for a section. This explicit convention makes citation enforcement deterministic without pretending software can infer whether arbitrary prose is factual.
+
+The validator uses an explicit manifest of the repository's current evidence-bearing narrative files. CI requires each manifest file to contain at least one balanced citation section and validates prose paragraphs, contiguous list items, controlled exemptions, and source IDs inside marked sections. Files outside the manifest are not required to contain markers. CI does not classify arbitrary prose, prove that every factual sentence falls inside a marked section, or determine that a cited source substantively supports the claim. Human pull-request review remains responsible for section-boundary completeness and evidentiary sufficiency.
 
 ## Legal floor and independent verifiability
 

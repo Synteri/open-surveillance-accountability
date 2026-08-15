@@ -22,6 +22,7 @@ All notable changes to the standard, repository-wide method, and public evidence
 - Documented deterministic citation-bounded sections and narrow controlled exceptions for genuinely nonfactual blocks.
 - Pinned recognized-framework crosswalk baselines and review dates without asserting certification, accreditation, formal conformity, or licensed ISO clause coverage.
 - Updated the Flock comparison against revised E01 without converting missing evidence into wrongdoing, noncompliance, or a claim that a safeguard is absent.
+- Corrected Fairfield's 2024 evidence characterization: the Board approved the agreement, and an order form in the meeting packet lists a 30-day retention term presented for approval, without independently establishing execution, production configuration, or current operation.
 
 ### Status
 
@@ -46,7 +47,7 @@ All notable changes to the standard, repository-wide method, and public evidence
 
 - Added the adversarial Flock evidence pass while preserving positive safeguards and documentation conflicts.
 - Distinguished responsible actors and separated legal-floor compliance from independent verifiability.
-- Added Fairfield 2024 procurement and contracted-deployment evidence while preserving the unknown current 2026 production state.
+- Added Fairfield 2024 board-approval and meeting-packet evidence, including an order form that lists a 30-day retention term presented for approval, while preserving unknown execution, production configuration, and current 2026 operation.
 - Added documentation-version requirements and an initial high-level crosswalk to recognized privacy, security, assessment, human-rights, and ALPR guidance.
 - Refined the central conclusion: meaningful controls exist, while important rights-relevant layers remain dependent on vendor or agency assertions rather than end-to-end independent verification.
 

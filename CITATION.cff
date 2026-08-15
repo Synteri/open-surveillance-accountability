@@ -8,9 +8,7 @@ authors:
 version: "0.3.0-draft.1"
 repository-code: "https://github.com/Synteri/open-surveillance-accountability"
 url: "https://github.com/Synteri/open-surveillance-accountability"
-license:
-  - "CC-BY-4.0"
-  - "MIT"
+license: CC-BY-4.0
 abstract: >-
   An open, evidence-forward draft accountability standard for public surveillance
   systems, with structured evidence and a Flock Safety ALPR case study. The

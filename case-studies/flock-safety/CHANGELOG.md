@@ -15,6 +15,7 @@ All findings are dated evidence snapshots. A correction to the case study may pr
 - Reclassified the public-inventory and capability-semantics rows as `Optional or customer-configurable`, and the vendor-announced testing row as `Announced or future`, because the cited material does not establish customer enablement or current test execution.
 - Added no new Flock or Fairfield research and made no claim of wrongdoing, legal noncompliance, or absence of safeguards from missing evidence.
 - Adopted the `0.3.0-draft.1` methodology for historical state and explicit matrix-semantic justifications while preserving the earlier evidence snapshot.
+- Corrected the Fairfield 2024 record to treat the 30-day period as an order-form term presented for approval, without independently inferring execution, production configuration, or current operation.
 
 ## 0.2.0-draft.1 — 2026-08-14
 

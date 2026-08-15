@@ -13,6 +13,7 @@ import unittest
 from pathlib import Path
 
 from scripts.validate import (
+    CITATION_REQUIRED_FILES,
     CORE_DIRECTORIES,
     CORE_FILES,
     DEFAULT_ROOT,
@@ -54,9 +55,20 @@ class RepositoryFixture:
             "evidence/local-*.md\n",
         )
         self.write("VERSION", "0.3.0-draft.1\n")
+        self.write("CITATION.cff", "cff-version: 1.2.0\nlicense: CC-BY-4.0\n")
+        for relative_path in CITATION_REQUIRED_FILES:
+            self.write(
+                relative_path,
+                "# Fixture\n\n"
+                "<!-- oasps-citations:start -->\n\n"
+                "A fixture fact. [SRC-0001]\n\n"
+                "<!-- oasps-citations:end -->\n",
+            )
         self.write("STANDARD.md", self.standard_text())
         self.write_sources([self.source_row()])
-        self.write_matrix([self.matrix_row()])
+        self.write_matrix(
+            self.global_matrix_rows(), complete_global_coverage=False
+        )
 
     def close(self) -> None:
         self.temporary.cleanup()
@@ -154,10 +166,41 @@ class RepositoryFixture:
             )
         return row
 
+    def global_matrix_rows(self) -> list[dict[str, str]]:
+        return [
+            self.matrix_row(
+                claim_id=f"FS-GLOBAL-{number:03d}",
+                requirement_id=requirement_id,
+            )
+            for number, requirement_id in enumerate(
+                sorted(EXPECTED_REQUIREMENT_IDS), start=1
+            )
+        ]
+
     def write_sources(self, rows: list[dict[str, str]], header=SOURCE_HEADER) -> None:
         self._write_csv("evidence/sources.csv", header, rows)
 
-    def write_matrix(self, rows: list[dict[str, str]], header=MATRIX_HEADER) -> None:
+    def write_matrix(
+        self,
+        rows: list[dict[str, str]],
+        header=MATRIX_HEADER,
+        complete_global_coverage: bool = True,
+    ) -> None:
+        if complete_global_coverage and tuple(header) == MATRIX_HEADER:
+            canonical_rows = self.global_matrix_rows()
+            canonical_claim_ids = {row["claim_id"] for row in canonical_rows}
+            completed_rows: list[dict[str, str]] = []
+            for canonical_row in canonical_rows:
+                replacements = [
+                    row
+                    for row in rows
+                    if row.get("claim_id") == canonical_row["claim_id"]
+                ]
+                completed_rows.extend(replacements or [canonical_row])
+            completed_rows.extend(
+                row for row in rows if row.get("claim_id") not in canonical_claim_ids
+            )
+            rows = completed_rows
         self._write_csv("case-studies/flock-safety/matrix.csv", header, rows)
 
     def _write_csv(self, relative_path: str, header, rows: list[dict[str, str]]) -> None:
@@ -246,6 +289,16 @@ class ValidatorTests(unittest.TestCase):
     def test_wrong_version_fails(self) -> None:
         self.fixture.write("VERSION", "0.2.0-draft.1\n")
         self.assert_error("0.3.0-draft.1")
+
+    def test_citation_metadata_uses_single_content_license(self) -> None:
+        self.fixture.write(
+            "CITATION.cff",
+            "cff-version: 1.2.0\n"
+            "license:\n"
+            "  - CC-BY-4.0\n"
+            "  - MIT\n",
+        )
+        self.assert_error("root license must be the single value CC-BY-4.0")
 
     def test_source_header_order_is_exact(self) -> None:
         header = list(SOURCE_HEADER)
@@ -411,6 +464,53 @@ class ValidatorTests(unittest.TestCase):
         self.fixture.write("STANDARD.md", text)
         self.assert_error("contains a vendor-specific term")
 
+    def test_complete_global_requirement_coverage_passes(self) -> None:
+        self.fixture.write_matrix(
+            self.fixture.global_matrix_rows(), complete_global_coverage=False
+        )
+        stream = io.StringIO()
+        validator = Validator(self.fixture.root, stream=stream)
+        self.assertEqual(0, validator.run(), stream.getvalue())
+        self.assertIn(
+            "32/32 canonical FS-GLOBAL requirements covered", stream.getvalue()
+        )
+
+    def test_missing_global_requirement_coverage_fails(self) -> None:
+        rows = self.fixture.global_matrix_rows()
+        missing_requirement = rows.pop()["requirement_id"]
+        self.fixture.write_matrix(rows, complete_global_coverage=False)
+        self.assert_error(
+            f"canonical FS-GLOBAL coverage for {missing_requirement} "
+            "must appear exactly once (found 0)"
+        )
+
+    def test_duplicate_global_requirement_coverage_fails(self) -> None:
+        rows = self.fixture.global_matrix_rows()
+        duplicate_requirement = rows[0]["requirement_id"]
+        rows.append(
+            self.fixture.matrix_row(
+                claim_id="FS-GLOBAL-999",
+                requirement_id=duplicate_requirement,
+            )
+        )
+        self.fixture.write_matrix(rows, complete_global_coverage=False)
+        self.assert_error(
+            f"canonical FS-GLOBAL coverage for {duplicate_requirement} "
+            "must appear exactly once (found 2)"
+        )
+
+    def test_additional_local_context_rows_do_not_affect_global_coverage(self) -> None:
+        self.fixture.write_matrix(
+            [
+                self.fixture.matrix_row(
+                    claim_id="FS-CT-FAIRFIELD-999",
+                    requirement_id="OASPS-A01",
+                    jurisdiction="Fairfield, Connecticut",
+                )
+            ]
+        )
+        self.assert_valid()
+
     def test_matrix_ids_must_be_formatted_unique_and_resolved(self) -> None:
         first = self.fixture.matrix_row(claim_id="CLAIM-1", requirement_id="OASPS-Z99")
         second = self.fixture.matrix_row(claim_id="CLAIM-1")
@@ -533,6 +633,56 @@ class ValidatorTests(unittest.TestCase):
         self.fixture.write_matrix([self.fixture.matrix_row(known_fact_basis="Not needed")])
         self.assert_error("known_fact_basis must be blank")
 
+    def test_known_fact_basis_requires_resolved_source(self) -> None:
+        self.fixture.write_matrix(
+            [
+                self.fixture.matrix_row(
+                    evidence_label="Unknown",
+                    verified_fact="",
+                    assessment="Meets",
+                    known_fact_basis="A narrow known fact supports the assessment.",
+                    implementation_state="Unknown",
+                    deployment_basis="",
+                    source_ids="",
+                )
+            ]
+        )
+        self.assert_error(
+            "known_fact_basis requires at least one resolved source_id"
+        )
+
+    def test_known_fact_basis_with_resolved_source_passes(self) -> None:
+        self.fixture.write_matrix(
+            [
+                self.fixture.matrix_row(
+                    evidence_label="Unknown",
+                    verified_fact="",
+                    assessment="Partly meets",
+                    known_fact_basis="A cited record establishes the narrow known fact.",
+                    implementation_state="Unknown",
+                    deployment_basis="",
+                    source_ids="SRC-0001",
+                )
+            ]
+        )
+        self.assert_valid()
+
+    def test_unknown_assessment_does_not_require_basis_or_source(self) -> None:
+        self.fixture.write_matrix(
+            [
+                self.fixture.matrix_row(
+                    evidence_label="Unknown",
+                    verified_fact="",
+                    assessment="Unknown",
+                    known_fact_basis="",
+                    implementation_state="Unknown",
+                    deployment_basis="",
+                    source_ids="",
+                )
+            ]
+        )
+        self.assert_valid()
+
     def test_historical_state_requires_iso_as_of_and_no_deployment_basis(self) -> None:
         self.fixture.write_matrix(
             [
@@ -590,16 +740,26 @@ class ValidatorTests(unittest.TestCase):
 
     def test_repository_source_tokens_resolve_and_placeholder_is_allowed(self) -> None:
         self.fixture.write(
-            "README.md",
+            "ROADMAP.md",
             "# Sources\n\nUse SRC-#### as a placeholder and SRC-[0-9]{4} as the format.\n",
         )
         self.assert_valid()
-        self.fixture.write("README.md", "# Sources\n\nMissing source SRC-9999.\n")
+        self.fixture.write("ROADMAP.md", "# Sources\n\nMissing source SRC-9999.\n")
         self.assert_error("source token 'SRC-9999' is missing")
-        self.fixture.write("README.md", "# Sources\n\nMalformed source SRC-12.\n")
+        self.fixture.write("ROADMAP.md", "# Sources\n\nMalformed source SRC-12.\n")
         self.assert_error("source token 'SRC-12' is malformed")
-        self.fixture.write("README.md", "# Sources\n\nMalformed source SRC-.\n")
+        self.fixture.write("ROADMAP.md", "# Sources\n\nMalformed source SRC-.\n")
         self.assert_error("source token 'SRC-' is malformed")
+
+    def test_designated_factual_file_requires_citation_markers(self) -> None:
+        self.fixture.write(
+            "case-studies/flock-safety/FINDINGS.md",
+            "# Findings\n\nA factual narrative without citation boundaries.\n",
+        )
+        self.assert_error(
+            "designated evidence-bearing narrative must contain at least one "
+            "balanced citation section"
+        )
 
     def test_marked_citation_sections_accept_citations_and_exemptions(self) -> None:
         self.fixture.write(
@@ -668,9 +828,9 @@ class ValidatorTests(unittest.TestCase):
         joined = self.assert_error("exemption reason is not allowed")
         self.assertIn("start marker has no matching end marker", joined)
 
-    def test_marker_examples_inside_prose_or_backticks_are_not_boundaries(self) -> None:
+    def test_undesignated_methodology_file_may_omit_markers(self) -> None:
         self.fixture.write(
-            "README.md",
+            "METHODOLOGY.md",
             "# Marker documentation\n\n"
             "Use `<!-- oasps-citations:start -->` to begin a section.\n\n"
             "A sentence mentions <!-- oasps-citations:end --> without making a boundary.\n\n"
@@ -679,40 +839,40 @@ class ValidatorTests(unittest.TestCase):
         self.assert_valid()
 
     def test_relative_markdown_links_resolve_and_cannot_escape(self) -> None:
-        self.fixture.write("README.md", "[Missing](missing.md)\n")
+        self.fixture.write("ROADMAP.md", "[Missing](missing.md)\n")
         self.assert_error("relative Markdown link does not resolve")
         outside = self.fixture.root.parent / "outside.md"
         outside.write_text("outside\n", encoding="utf-8")
-        self.fixture.write("README.md", "[Outside](../outside.md)\n")
+        self.fixture.write("ROADMAP.md", "[Outside](../outside.md)\n")
         self.assert_error("relative Markdown link escapes the repository")
 
     def test_sensitive_plate_detection_does_not_echo_value(self) -> None:
         sensitive = "ABC-1234"
-        self.fixture.write("README.md", f"A license plate was {sensitive}.\n")
+        self.fixture.write("ROADMAP.md", f"A license plate was {sensitive}.\n")
         joined = self.assert_error("possible public plate literal")
         self.assertNotIn(sensitive, joined)
 
     def test_secret_detection_does_not_echo_value(self) -> None:
         sensitive = "SuperSecretValue12345"
-        self.fixture.write("README.md", f"api_key={sensitive}\n")
+        self.fixture.write("ROADMAP.md", f"api_key={sensitive}\n")
         joined = self.assert_error("possible secret or credential")
         self.assertNotIn(sensitive, joined)
 
     def test_explicit_travel_trail_detection_does_not_echo_content(self) -> None:
         sensitive = "Vehicle was observed at 10 Main Street then detected at 20 Main Street."
-        self.fixture.write("README.md", sensitive + "\n")
+        self.fixture.write("ROADMAP.md", sensitive + "\n")
         joined = self.assert_error("possible explicit travel or location trail")
         self.assertNotIn(sensitive, joined)
 
     def test_explicit_labeled_personal_trail_is_detected(self) -> None:
         sensitive = "Location history for vehicle A1B2C3: 10 Main Street -> 20 Main Street"
-        self.fixture.write("README.md", sensitive + "\n")
+        self.fixture.write("ROADMAP.md", sensitive + "\n")
         joined = self.assert_error("possible explicit travel or location trail")
         self.assertNotIn(sensitive, joined)
 
     def test_sensitive_rules_allow_identifiers_dates_and_process_prose(self) -> None:
         self.fixture.write(
-            "README.md",
+            "METHODOLOGY.md",
             "plate SRC-0001\n"
             "plate 2026-08\n"
             "build 1ABC234\n"

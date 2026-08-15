@@ -33,7 +33,7 @@ The first case study does not evaluate:
 
 <!-- oasps-citations:start -->
 
-Fairfield's 2024 procurement included products beyond the ALPR scope. Those products are named only to define the local contract accurately; they are not silently folded into the Flock ALPR assessment. [SRC-0033]
+The order form included in Fairfield's board-approved 2024 meeting packet listed products beyond the ALPR scope. Those products are named only to describe the presented order-form package accurately; their listing does not establish execution or current operation. [SRC-0033]
 
 <!-- oasps-citations:end -->
 

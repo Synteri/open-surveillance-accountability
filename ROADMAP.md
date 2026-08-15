@@ -13,7 +13,7 @@ OASPS is currently a private bootstrap at `0.3.0-draft.1`. This roadmap lists ev
 
 ## 2. Establish Fairfield's current state
 
-The repository distinguishes Fairfield's documented 2024 contracted state from its still-unresolved 2026 production state. Before a Fairfield-focused public launch, seek lawful, current evidence for:
+The repository distinguishes Fairfield's documented 2024 board approval and order-form terms presented for approval from its still-unresolved execution, production configuration, and current 2026 operation. Before a Fairfield-focused public launch, seek lawful, current evidence for:
 
 - the active contract term, products, renewal state, and amendments;
 - the current ALPR retention setting;

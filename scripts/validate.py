@@ -248,6 +248,22 @@ MARKDOWN_LINK_RE = re.compile(
 )
 CITATION_START = "<!-- oasps-citations:start -->"
 CITATION_END = "<!-- oasps-citations:end -->"
+CITATION_REQUIRED_FILES = frozenset(
+    {
+        "README.md",
+        "case-studies/flock-safety/FINDINGS.md",
+        "case-studies/flock-safety/README.md",
+        "case-studies/flock-safety/SCOPE.md",
+        "case-studies/flock-safety/UNRESOLVED.md",
+        "case-studies/flock-safety/jurisdictions/connecticut/README.md",
+        "case-studies/flock-safety/jurisdictions/connecticut/fairfield.md",
+        "standard/crosswalks/convention-108-plus.md",
+        "standard/crosswalks/iacp-bja-alpr.md",
+        "standard/crosswalks/iso-27701.md",
+        "standard/crosswalks/nist-privacy-framework.md",
+        "standard/crosswalks/nist-sp-800-53.md",
+    }
+)
 EXEMPTION_RE = re.compile(
     r"<!-- oasps-citation-exempt: (?P<reason>[a-z-]+) -->\Z"
 )
@@ -356,6 +372,7 @@ class Validator:
         self.text_cache: dict[str, str] = {}
         self.source_count = 0
         self.matrix_count = 0
+        self.global_matrix_coverage = 0
 
     def error(self, location: str, message: str) -> None:
         self.errors.append(f"{location}: {message}")
@@ -432,6 +449,20 @@ class Validator:
             EXPECTED_VERSION + "\r\n",
         }:
             self.error("VERSION", f"must contain exactly {EXPECTED_VERSION!r} as its only line")
+
+    def validate_citation_metadata(self) -> None:
+        text = self.text("CITATION.cff")
+        if text is None:
+            return
+        top_level_license_lines = [
+            line for line in text.splitlines() if line.startswith("license:")
+        ]
+        if top_level_license_lines != ["license: CC-BY-4.0"]:
+            self.error(
+                "CITATION.cff",
+                "root license must be the single value CC-BY-4.0; "
+                "validation code is separately file-scoped MIT",
+            )
 
     def read_csv(
         self, relative_path: str, expected_header: tuple[str, ...]
@@ -702,6 +733,7 @@ class Validator:
         relative_path = "case-studies/flock-safety/matrix.csv"
         records = self.read_csv(relative_path, MATRIX_HEADER)
         claim_ids: list[str] = []
+        global_requirement_counts: Counter[str] = Counter()
         for line_number, record in records:
             location = f"{relative_path}:{line_number}"
             self.require_fields(relative_path, line_number, record, MATRIX_REQUIRED_FIELDS)
@@ -716,6 +748,12 @@ class Validator:
                     self.error(location, "requirement_id must match OASPS-[A-F]##")
                 elif requirement_id not in requirement_ids:
                     self.error(location, "requirement_id has no heading in STANDARD.md")
+            if (
+                claim_id.startswith("FS-GLOBAL-")
+                and CLAIM_ID_RE.fullmatch(claim_id)
+                and requirement_id in requirement_ids
+            ):
+                global_requirement_counts[requirement_id] += 1
 
             actor = record["responsible_actor"].strip()
             evidence = record["evidence_label"].strip()
@@ -799,6 +837,11 @@ class Validator:
                 known_basis_needed,
                 "Unknown evidence has a definitive assessment",
             )
+            if known_basis_needed and not has_sources:
+                self.error(
+                    location,
+                    "known_fact_basis requires at least one resolved source_id",
+                )
             self.conditional_field(
                 location,
                 record,
@@ -831,6 +874,18 @@ class Validator:
         for claim_id, count in Counter(claim_ids).items():
             if count > 1:
                 self.error(relative_path, f"claim_id {claim_id!r} appears {count} times")
+        for requirement_id in sorted(requirement_ids):
+            count = global_requirement_counts[requirement_id]
+            if count != 1:
+                self.error(
+                    relative_path,
+                    f"canonical FS-GLOBAL coverage for {requirement_id} "
+                    f"must appear exactly once (found {count})",
+                )
+        self.global_matrix_coverage = sum(
+            global_requirement_counts[requirement_id] == 1
+            for requirement_id in requirement_ids
+        )
         return len(records)
 
     def conditional_field(
@@ -896,6 +951,17 @@ class Validator:
                     )
 
     def validate_citation_sections(self, source_ids: set[str]) -> None:
+        for relative_path in sorted(CITATION_REQUIRED_FILES):
+            text = self.text(relative_path)
+            if text is None:
+                continue
+            stripped_lines = {line.strip() for line in text.splitlines()}
+            if CITATION_START not in stripped_lines or CITATION_END not in stripped_lines:
+                self.error(
+                    relative_path,
+                    "designated evidence-bearing narrative must contain at least one "
+                    "balanced citation section",
+                )
         for relative_path in sorted(self.inventory):
             if relative_path.endswith(".md") and is_publishable_path(relative_path):
                 text = self.text(relative_path)
@@ -1116,6 +1182,7 @@ class Validator:
         self.validate_core_paths()
         self.validate_utf8_text()
         self.validate_version()
+        self.validate_citation_metadata()
         requirement_ids, requirement_actors = self.validate_standard()
         source_ids, self.source_count = self.validate_sources()
         self.matrix_count = self.validate_matrix(source_ids, requirement_ids, requirement_actors)
@@ -1140,7 +1207,9 @@ class Validator:
         print(
             "OASPS repository validation passed: "
             f"{len(EXPECTED_REQUIREMENT_IDS)} requirements, "
-            f"{self.source_count} sources, {self.matrix_count} matrix rows, and "
+            f"{self.global_matrix_coverage}/{len(EXPECTED_REQUIREMENT_IDS)} canonical "
+            f"FS-GLOBAL requirements covered, {self.source_count} sources, "
+            f"{self.matrix_count} matrix rows, and "
             f"{len(self.inventory)} supported repository files checked.",
             file=self.stream,
         )
