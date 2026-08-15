@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use OASPS, please cite this repository and the specific version you reviewed."
+title: "Open Accountability Standard for Public Surveillance Systems"
+type: dataset
+authors:
+  - family-names: "Schumacher"
+    given-names: "Jacob"
+version: "0.3.0-draft.1"
+repository-code: "https://github.com/Synteri/open-surveillance-accountability"
+url: "https://github.com/Synteri/open-surveillance-accountability"
+license: CC-BY-4.0
+abstract: >-
+  An open, evidence-forward draft accountability standard for public surveillance
+  systems, with structured evidence and a Flock Safety ALPR case study. The
+  documentation and structured factual content use CC BY 4.0; validation code
+  uses the MIT License. This citation does not imply certification, accreditation,
+  endorsement, or a finding of wrongdoing.
+keywords:
+  - "public surveillance"
+  - "accountability"
+  - "ALPR"
+  - "privacy"
+  - "public evidence"
+preferred-citation:
+  type: generic
+  authors:
+    - family-names: "Schumacher"
+      given-names: "Jacob"
+  title: "Open Accountability Standard for Public Surveillance Systems"
+  year: 2026
+  version: "0.3.0-draft.1"
+  url: "https://github.com/Synteri/open-surveillance-accountability"
