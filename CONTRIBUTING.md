@@ -1,6 +1,6 @@
 # Contributing to OASPS
 
-OASPS `0.3.0-draft.1` is an open public working draft released for review, correction, and good-faith criticism. It is not a stable standard, certification, legal determination, or finding of wrongdoing. Careful disagreement, corrections, local records, and technical criticism are welcome through public issues and pull requests. Review is voluntary and unpaid at this stage.
+OASPS `0.4.0-draft.1` is an open public working draft released for review, correction, and good-faith criticism. It is not a stable standard, certification, legal determination, or finding of wrongdoing. Careful disagreement, corrections, local records, and technical criticism are welcome through public issues and pull requests. Review is voluntary and unpaid at this stage.
 
 Submitting feedback does **not** mean that you endorse OASPS, its findings, or its author. The project will not describe your participation as endorsement unless you explicitly authorize that description. You may participate using only your GitHub username.
 

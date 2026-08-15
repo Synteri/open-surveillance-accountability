@@ -1,6 +1,6 @@
 # Disclaimer
 
-The Open Accountability Standard for Public Surveillance Systems (OASPS) `0.3.0-draft.1` is an open public working draft released for research, discussion, correction, and voluntary review. It is not a stable standard, certification, legal determination, or finding of wrongdoing.
+The Open Accountability Standard for Public Surveillance Systems (OASPS) `0.4.0-draft.1` is an open public working draft released for research, discussion, correction, and voluntary review. It is not a stable standard, certification, legal determination, or finding of wrongdoing.
 
 ## What this project is not
 

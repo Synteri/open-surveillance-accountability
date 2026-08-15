@@ -1,6 +1,6 @@
 # Evidence Register
 
-[`sources.csv`](sources.csv) is the repository's single stable register for sources used by the standard crosswalks, Flock Safety case study, and Fairfield implementation record.
+[`sources.csv`](sources.csv) is the repository's single stable register for sources used by the standard crosswalks, Flock Safety vendor case study, and Fairfield jurisdiction inventory.
 
 ## What a source row means
 

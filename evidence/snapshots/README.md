@@ -17,4 +17,4 @@ Snapshots must use descriptive filenames without personal data and must be revie
 
 After any authorized redaction, compute SHA-256 over the exact bytes that would be committed and record the lowercase 64-hex digest in `content_sha256`. Record `retrieved_at` only when the exact retrieval timestamp and timezone are known. Do not infer it from `accessed_date`, and leave both timestamp and hash fields blank when the exact evidence is absent.
 
-No snapshot is present in `0.3.0-draft.1`.
+No snapshot is present in `0.4.0-draft.1`.

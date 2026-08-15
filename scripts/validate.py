@@ -17,12 +17,14 @@ from urllib.parse import unquote, urlsplit
 
 
 DEFAULT_ROOT = Path(__file__).resolve().parents[1]
-EXPECTED_VERSION = "0.3.0-draft.1"
+EXPECTED_VERSION = "0.4.0-draft.1"
 
 CORE_DIRECTORIES = (
     ".github",
     ".github/ISSUE_TEMPLATE",
     ".github/workflows",
+    "case-studies/fairfield-connecticut",
+    "case-studies/fairfield-connecticut/systems",
     "case-studies/flock-safety/jurisdictions/connecticut",
     "evidence/snapshots",
     "scripts",
@@ -54,6 +56,14 @@ CORE_FILES = (
     "ROADMAP.md",
     "STANDARD.md",
     "VERSION",
+    "case-studies/fairfield-connecticut/CHANGELOG.md",
+    "case-studies/fairfield-connecticut/README.md",
+    "case-studies/fairfield-connecticut/UNRESOLVED.md",
+    "case-studies/fairfield-connecticut/inventory.csv",
+    "case-studies/fairfield-connecticut/systems/automated-traffic-enforcement.md",
+    "case-studies/fairfield-connecticut/systems/axon-police-video.md",
+    "case-studies/fairfield-connecticut/systems/flock-alpr.md",
+    "case-studies/fairfield-connecticut/systems/school-security-cameras.md",
     "case-studies/flock-safety/CHANGELOG.md",
     "case-studies/flock-safety/FINDINGS.md",
     "case-studies/flock-safety/README.md",
@@ -130,6 +140,27 @@ MATRIX_HEADER = (
     "notes",
 )
 
+INVENTORY_HEADER = (
+    "system_id",
+    "system_name",
+    "vendor",
+    "operator",
+    "technology_category",
+    "jurisdiction",
+    "public_purpose",
+    "documented_capabilities",
+    "evidence_label",
+    "implementation_state",
+    "last_verified",
+    "source_ids",
+    "authorization_or_policy",
+    "retention_or_data_use",
+    "sharing_or_access",
+    "unresolved_question",
+    "next_action",
+    "notes",
+)
+
 SOURCE_REQUIRED_FIELDS = (
     "source_id",
     "title",
@@ -157,6 +188,22 @@ MATRIX_REQUIRED_FIELDS = (
     "last_verified",
     "unresolved_question",
     "next_action",
+)
+INVENTORY_REQUIRED_FIELDS = (
+    "system_id",
+    "system_name",
+    "vendor",
+    "operator",
+    "technology_category",
+    "jurisdiction",
+    "public_purpose",
+    "documented_capabilities",
+    "evidence_label",
+    "implementation_state",
+    "last_verified",
+    "authorization_or_policy",
+    "retention_or_data_use",
+    "sharing_or_access",
 )
 
 ALLOWED_SOURCE_TYPES = frozenset(
@@ -232,6 +279,7 @@ SOURCE_TOKEN_RE = re.compile(
     re.IGNORECASE,
 )
 CLAIM_ID_RE = re.compile(r"(?:FS-GLOBAL|FS-CT-FAIRFIELD|FS-CT)-[0-9]{3}\Z")
+INVENTORY_ID_RE = re.compile(r"CT-FAIRFIELD-SYS-[0-9]{3}\Z")
 REQUIREMENT_ID_RE = re.compile(r"OASPS-[A-F][0-9]{2}\Z")
 REQUIREMENT_HEADING_RE = re.compile(
     r"^### (?P<id>OASPS-[A-F][0-9]{2}) — (?P<title>\S(?:.*\S)?)$"
@@ -252,6 +300,12 @@ CITATION_END = "<!-- oasps-citations:end -->"
 CITATION_REQUIRED_FILES = frozenset(
     {
         "README.md",
+        "case-studies/fairfield-connecticut/README.md",
+        "case-studies/fairfield-connecticut/UNRESOLVED.md",
+        "case-studies/fairfield-connecticut/systems/automated-traffic-enforcement.md",
+        "case-studies/fairfield-connecticut/systems/axon-police-video.md",
+        "case-studies/fairfield-connecticut/systems/flock-alpr.md",
+        "case-studies/fairfield-connecticut/systems/school-security-cameras.md",
         "case-studies/flock-safety/FINDINGS.md",
         "case-studies/flock-safety/README.md",
         "case-studies/flock-safety/SCOPE.md",
@@ -373,6 +427,7 @@ class Validator:
         self.text_cache: dict[str, str] = {}
         self.source_count = 0
         self.matrix_count = 0
+        self.jurisdiction_inventory_count = 0
         self.global_matrix_coverage = 0
 
     def error(self, location: str, message: str) -> None:
@@ -889,6 +944,87 @@ class Validator:
         )
         return len(records)
 
+    def validate_jurisdiction_inventory(self, source_ids: set[str]) -> int:
+        """Validate Fairfield's jurisdiction-level system-discovery inventory."""
+        relative_path = "case-studies/fairfield-connecticut/inventory.csv"
+        records = self.read_csv(relative_path, INVENTORY_HEADER)
+        system_ids: list[str] = []
+        for line_number, record in records:
+            location = f"{relative_path}:{line_number}"
+            self.require_fields(
+                relative_path, line_number, record, INVENTORY_REQUIRED_FIELDS
+            )
+            system_id = record["system_id"].strip()
+            if system_id:
+                system_ids.append(system_id)
+                if not INVENTORY_ID_RE.fullmatch(system_id):
+                    self.error(
+                        location,
+                        "system_id must match CT-FAIRFIELD-SYS-###",
+                    )
+
+            evidence = record["evidence_label"].strip()
+            state = record["implementation_state"].strip()
+            jurisdiction = record["jurisdiction"].strip()
+            if jurisdiction and jurisdiction != "Fairfield, Connecticut":
+                self.error(
+                    location,
+                    "jurisdiction must be exactly 'Fairfield, Connecticut'",
+                )
+            self.validate_allowed(
+                relative_path,
+                line_number,
+                "evidence_label",
+                evidence,
+                ALLOWED_EVIDENCE_LABELS,
+            )
+            self.validate_allowed(
+                relative_path,
+                line_number,
+                "implementation_state",
+                state,
+                ALLOWED_IMPLEMENTATION_STATES,
+            )
+
+            last_verified = record["last_verified"].strip()
+            if last_verified:
+                self.validate_iso_date(
+                    relative_path, line_number, "last_verified", last_verified
+                )
+            resolved_source_ids = self.validate_matrix_sources(
+                relative_path,
+                line_number,
+                record["source_ids"].strip(),
+                source_ids,
+            )
+            source_required = evidence != "Unknown" or state == "Deployed now"
+            if source_required and not resolved_source_ids:
+                self.error(
+                    location,
+                    "source_ids is required for non-Unknown evidence or Deployed now state",
+                )
+
+            current_state_incomplete = evidence != "Verified" or state != "Deployed now"
+            if current_state_incomplete:
+                if not record["unresolved_question"].strip():
+                    self.error(
+                        location,
+                        "unresolved_question is required when current state is incomplete",
+                    )
+                if not record["next_action"].strip():
+                    self.error(
+                        location,
+                        "next_action is required when current state is incomplete",
+                    )
+
+        for system_id, count in Counter(system_ids).items():
+            if count > 1:
+                self.error(
+                    relative_path,
+                    f"system_id {system_id!r} appears {count} times",
+                )
+        return len(records)
+
     def conditional_field(
         self,
         location: str,
@@ -1186,6 +1322,7 @@ class Validator:
         self.validate_citation_metadata()
         requirement_ids, requirement_actors = self.validate_standard()
         source_ids, self.source_count = self.validate_sources()
+        self.jurisdiction_inventory_count = self.validate_jurisdiction_inventory(source_ids)
         self.matrix_count = self.validate_matrix(source_ids, requirement_ids, requirement_actors)
         self.validate_repository_source_tokens(source_ids)
         self.validate_citation_sections(source_ids)
@@ -1210,7 +1347,8 @@ class Validator:
             f"{len(EXPECTED_REQUIREMENT_IDS)} requirements, "
             f"{self.global_matrix_coverage}/{len(EXPECTED_REQUIREMENT_IDS)} canonical "
             f"FS-GLOBAL requirements covered, {self.source_count} sources, "
-            f"{self.matrix_count} matrix rows, and "
+            f"{self.matrix_count} matrix rows, {self.jurisdiction_inventory_count} "
+            f"Fairfield inventory rows, and "
             f"{len(self.inventory)} supported repository files checked.",
             file=self.stream,
         )

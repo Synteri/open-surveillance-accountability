@@ -1,9 +1,10 @@
 # Data Dictionary
 
-This document defines the two CSV files in the first OASPS repository snapshot:
+This document defines the three CSV files in the current OASPS repository snapshot:
 
 - [`evidence/sources.csv`](evidence/sources.csv), the stable source register;
-- [`case-studies/flock-safety/matrix.csv`](case-studies/flock-safety/matrix.csv), the claim-by-claim evidence ledger.
+- [`case-studies/flock-safety/matrix.csv`](case-studies/flock-safety/matrix.csv), the claim-by-claim vendor evidence ledger;
+- [`case-studies/fairfield-connecticut/inventory.csv`](case-studies/fairfield-connecticut/inventory.csv), the jurisdiction-level system inventory.
 
 CSV files use UTF-8, a comma delimiter, one header row, and RFC 4180-style quoting. A field containing a comma, quotation mark, or line break must be enclosed in double quotes, and an embedded double quote must be doubled. Blank fields are represented by adjacent delimiters; the strings `null`, `N/A`, and `TBD` are not null markers.
 
@@ -30,18 +31,19 @@ Local snapshots use repository-relative paths under `evidence/snapshots/` and on
 | Flock global claim | `FS-GLOBAL-[0-9]{3}` | `FS-GLOBAL-014` |
 | Connecticut claim | `FS-CT-[0-9]{3}` | `FS-CT-001` |
 | Fairfield claim | `FS-CT-FAIRFIELD-[0-9]{3}` | `FS-CT-FAIRFIELD-004` |
+| Fairfield system | `CT-FAIRFIELD-SYS-[0-9]{3}` | `CT-FAIRFIELD-SYS-004` |
 
 Identifiers are unique within their file and are not recycled after publication. A withdrawn item keeps its ID and records its disposition in notes and the relevant changelog.
 
 ### Multiple source IDs
 
-`source_ids` in the matrix uses a vertical bar with no surrounding spaces:
+`source_ids` in either case-study CSV uses a vertical bar with no surrounding spaces:
 
 ```text
 SRC-0010|SRC-0016
 ```
 
-Each token must exist exactly once in `evidence/sources.csv`. A row with no supporting source leaves `source_ids` blank and must use an `Unknown` evidence label with a specific unresolved question. Narrative claims may show multiple IDs as `[SRC-0010, SRC-0016]` for readability.
+Each token must exist exactly once in `evidence/sources.csv`. A row with no supporting source leaves `source_ids` blank, must use an `Unknown` evidence label with a specific unresolved question, and cannot claim `Deployed now`. Narrative claims may show multiple IDs as `[SRC-0010, SRC-0016]` for readability.
 
 ### Narrative citation markers
 
@@ -103,6 +105,39 @@ Allowed `source_type` values:
 - `Reporting`
 
 The controlled set may be extended only through a documented schema decision and corresponding validator update.
+
+## `case-studies/fairfield-connecticut/inventory.csv`
+
+The Fairfield inventory is a discovery record, not an OASPS compliance matrix. It keeps distinct technologies in separate rows and records the strongest current public-evidence conclusion that can be supported for each one. It deliberately has no `assessment` field.
+
+Columns appear in this exact order:
+
+```text
+system_id,system_name,vendor,operator,technology_category,jurisdiction,public_purpose,documented_capabilities,evidence_label,implementation_state,last_verified,source_ids,authorization_or_policy,retention_or_data_use,sharing_or_access,unresolved_question,next_action,notes
+```
+
+| Column | Required | Definition | Rules and example |
+|---|---:|---|---|
+| `system_id` | Yes | Stable Fairfield system identifier. | Unique `CT-FAIRFIELD-SYS-###`; example `CT-FAIRFIELD-SYS-002`. |
+| `system_name` | Yes | Plain-language name for the distinct system or service. | Do not collapse traffic enforcement, police video, ALPR, and school-area monitoring into one camera system. |
+| `vendor` | Yes | Publicly established supplier or `Unknown`. | A proposed or historical vendor is qualified in `notes`; capability alone does not establish deployment. |
+| `operator` | Yes | Public body or bodies documented as operating or administering the system. | Use the narrow public-evidence description rather than inferring control from procurement. |
+| `technology_category` | Yes | Vendor-neutral functional category. | Examples: `Automated license-plate recognition` and `Body-worn video`. |
+| `jurisdiction` | Yes | Geographic scope. | This inventory uses `Fairfield, Connecticut`. |
+| `public_purpose` | Yes | Purpose stated in public records. | Records the documented purpose, not a finding about every actual use. |
+| `documented_capabilities` | Yes | Capabilities the cited records describe. | Distinguish described capability from enabled configuration and actual use. |
+| `evidence_label` | Yes | Confidence in the underlying inventory fact. | Uses the same controlled vocabulary as the Flock matrix. |
+| `implementation_state` | Yes | Best-supported timing or deployment posture. | Uses the same controlled vocabulary as the Flock matrix. |
+| `last_verified` | Yes | Date the cited public evidence was last checked. | ISO date. It is not necessarily the deployment or publication date. |
+| `source_ids` | Conditional | Supporting source identifiers. | Pipe-separated and resolvable. Required when the evidence label is not `Unknown` or the implementation state is `Deployed now`; an unsupported current-deployment claim is invalid. |
+| `authorization_or_policy` | Yes | Public authority, approval, contract, or operational policy located. | A proposal or approval is identified as such and is not converted into proof of execution. |
+| `retention_or_data_use` | Yes | Publicly documented retention, destruction, preservation, or use limits. | Use a precise `Unknown` statement when no applicable current rule was located. |
+| `sharing_or_access` | Yes | Publicly documented access, disclosure, or sharing. | Do not infer access from technical capability. |
+| `unresolved_question` | Conditional | Material fact or proof still missing. | Required when `evidence_label` is not `Verified` or `implementation_state` is not `Deployed now`. |
+| `next_action` | Conditional | Lawful, proportionate evidence step. | Required under the same incomplete-state condition; it must not direct automated contact, records submission, or testing. |
+| `notes` | No | Scope qualifications, conflicts, count limits, or cross-links. | Use this field to prevent a historical procurement or mixed record from being read as current configuration. |
+
+Allowed `evidence_label` and `implementation_state` values are the same controlled sets documented for the Flock matrix below. Passing inventory validation establishes schema consistency and source resolution; it does not score a system or prove production behavior.
 
 ## `case-studies/flock-safety/matrix.csv`
 

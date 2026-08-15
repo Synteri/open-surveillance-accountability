@@ -2,7 +2,7 @@
 
 ## Included
 
-The `0.3.0-draft.1` case study evaluates the Flock Safety ALPR ecosystem where the current source record permits, including:
+The `0.4.0-draft.1` case study evaluates the Flock Safety ALPR ecosystem where the current source record permits, including:
 
 - ALPR image capture and observation data;
 - plate interpretation, confidence information, and vehicle descriptors;
@@ -18,7 +18,7 @@ The `0.3.0-draft.1` case study evaluates the Flock Safety ALPR ecosystem where t
 
 ## Excluded
 
-The first case study does not evaluate:
+This vendor case study does not evaluate:
 
 - drones;
 - audio or acoustic-detection products;

@@ -3,6 +3,8 @@
 **Evidence last reviewed:** 2026-08-14  
 **Scope:** Fairfield-specific public records and public-observability evidence for the Flock ALPR-relevant deployment
 
+For Fairfield's other documented camera-surveillance systems, see the separate [jurisdiction-level inventory](../../../fairfield-connecticut/README.md). That module cross-links this record and does not change its findings.
+
 ## Bottom line
 
 <!-- oasps-citations:start -->
@@ -21,7 +23,7 @@ The order form included in the board-approved 2024 meeting packet lists an annua
 
 ### Original product mix
 
-The order form included in the board-approved 2024 meeting packet lists FlockOS Advanced; 21 Falcon units; 4 Falcon Flex units; 8 Wing LPR units; 8 Wing VMS streams; 18 Wing Gateway 8-stream units; and 5 Condor PTZ units. The listed package was therefore broader than standalone ALPR cameras, but its listing does not establish execution or current operation. OASPS `0.3.0-draft.1` evaluates only the ALPR-relevant subset and does not silently score the other video or platform functions. [SRC-0033]
+The order form included in the board-approved 2024 meeting packet lists FlockOS Advanced; 21 Falcon units; 4 Falcon Flex units; 8 Wing LPR units; 8 Wing VMS streams; 18 Wing Gateway 8-stream units; and 5 Condor PTZ units. The listed package was therefore broader than standalone ALPR cameras, but its listing does not establish execution or current operation. OASPS `0.4.0-draft.1` evaluates only the ALPR-relevant subset and does not silently score the other video or platform functions. [SRC-0033]
 
 ### Order-form retention term
 

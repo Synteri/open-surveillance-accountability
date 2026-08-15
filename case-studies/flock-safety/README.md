@@ -1,6 +1,6 @@
 # Flock Safety ALPR Case Study
 
-**Case-study version:** `0.3.0-draft.1`
+**Case-study version:** `0.4.0-draft.1`
 
 **Evidence last reviewed:** 2026-08-14  
 **Status:** Open public working draft
