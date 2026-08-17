@@ -2,9 +2,11 @@
 
 <!-- oasps-citations:start -->
 
-Connecticut is the first jurisdiction-specific OASPS module because state law, vendor contract provisions, municipal procurement records, and public agency portals provide evidence that cannot be inferred from Flock's national materials. [SRC-0022, SRC-0030, SRC-0031, SRC-0032, SRC-0033, SRC-0035, SRC-0037]
+Connecticut is the first jurisdiction-specific OASPS module because state law, vendor contract provisions, and municipal procurement records provide evidence that cannot be inferred from Flock's general materials. [SRC-0022, SRC-0032, SRC-0033, SRC-0035, SRC-0037]
 
-The current module contains the [Fairfield implementation record](fairfield.md). The parent Notion research pass reported indexed Wilton and Windsor portal listings for Fairfield, but direct portal retrieval returned an access error during the repository build and no durable snapshot is stored. The possible relationship remains an unresolved lead and does not establish actual use, reciprocal sharing, or current configuration. [SRC-0030, SRC-0031]
+The current module contains the [Fairfield implementation record](fairfield.md). Two public Flock portal URLs are retained as unresolved evidence targets, but direct retrieval returned access errors and no local or archived snapshot is registered. They do not establish Fairfield access, actual use, reciprocal sharing, or current configuration. [SRC-0030, SRC-0031]
+
+Flock's general Connecticut contractual provisions specify 21 days or a shorter customer-requested period for covered public-agency ALPR data. Those provisions do not establish Fairfield's current executed agreement or configured retention period. [SRC-0022]
 
 Connecticut Public Act 26-14 contains ALPR requirements with provision-specific effective dates, and Public Act 26-76 later amended part of the enacted text. The module cites both and avoids a legal-compliance conclusion. [SRC-0035, SRC-0037]
 

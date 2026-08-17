@@ -91,7 +91,7 @@ Text in one layer must not silently populate another. A policy promise does not 
 
 ## Evidence and judgment remain separate
 
-The `evidence_label` describes confidence in the underlying facts. The `assessment` compares those facts with the OASPS requirement. These fields must not be combined.
+The `evidence_label` records the row's evidentiary posture. `Verified`, `Vendor-asserted`, `Partially verifiable`, and `Unknown` describe how well the underlying fact is established. `Noncompliant` is reserved for evidence establishing failure against a cited binding obligation; it is not a confidence level. The `assessment` separately compares the supported facts with the OASPS requirement. These fields must not be combined.
 
 Examples:
 

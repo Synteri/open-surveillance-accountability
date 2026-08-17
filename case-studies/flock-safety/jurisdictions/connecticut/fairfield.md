@@ -1,6 +1,6 @@
 # Fairfield, Connecticut Implementation Record
 
-**Evidence last reviewed:** 2026-08-14  
+**Evidence last reviewed:** 2026-08-17
 **Scope:** Fairfield-specific public records and public-observability evidence for the Flock ALPR-relevant deployment
 
 For Fairfield's other documented camera-surveillance systems, see the separate [jurisdiction-level inventory](../../../fairfield-connecticut/README.md). That module cross-links this record and does not change its findings.
@@ -37,7 +37,7 @@ The 2024 renewal language supports the possibility of continued service without 
 
 ### Cross-agency access
 
-The parent Notion research pass reported indexed Wilton and Windsor portal listings for `Fairfield CT PD`. Direct retrieval of the portal content returned an access error during the repository build, and no lawful durable snapshot is stored here. The possible relationship is therefore an unresolved lead, not an independently re-established finding; it does not establish that Fairfield searched the data, still has access, shares its own data outward, or has a reciprocal relationship. [SRC-0030, SRC-0031]
+Two public Flock portal URLs are retained as possible evidence targets. Direct retrieval returned access errors, and no local or archived snapshot is registered. Those URLs do not establish that Fairfield searched data, has access, shares its own data outward, or has a reciprocal relationship. [SRC-0030, SRC-0031]
 
 ### Search activity and public discoverability
 
@@ -51,7 +51,7 @@ The source set does not establish Fairfield's current retention setting, current
 
 Public Act 26-14 establishes ALPR restrictions with provision-specific effective dates, principally October 1, 2026 for the provisions discussed in the research record. The act includes restrictions tied to enumerated actual or perceived characteristics, First Amendment activity, immigration enforcement, and reproductive or gender-affirming care, along with retention, sharing, audit, and transparency rules. Public Act 26-76 later amended part of the enacted text, so the original act is not treated as the complete current rule. [SRC-0035, SRC-0037]
 
-Flock publishes Connecticut-specific contractual provisions, but those generic state terms do not establish Fairfield's executed amendment or live configuration. [SRC-0022]
+Flock's Connecticut-specific contractual provisions state that covered public-agency ALPR data is retained for 21 days or a shorter customer-requested period, notwithstanding a conflicting order-form term. Those general state terms do not establish Fairfield's current executed agreement, requested period, or live configuration. [SRC-0022]
 
 <!-- oasps-citations:end -->
 

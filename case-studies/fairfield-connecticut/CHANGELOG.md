@@ -4,6 +4,7 @@ This changelog records material changes to the jurisdiction-level inventory. It 
 
 ## Unreleased
 
+- Rechecked the Flock inventory record against the general Connecticut 21-day-or-shorter contractual provision while preserving the historical 30-day order-form term and Fairfield's unknown current configuration.
 - Await current public evidence identified in [UNRESOLVED.md](UNRESOLVED.md).
 - No public-record request, external outreach, system testing, location mapping, tag, release, or external announcement is authorized by this entry.
 

@@ -8,6 +8,14 @@ All notable changes to the standard, repository-wide method, and public evidence
 
 - Added a minimum-complete funding and commissioning package for a vendor-neutral Connecticut ALPR Accountability Pilot, including offers, a bounded Milford preview, outreach operations, and transaction templates.
 
+### Corrected
+
+- Reconciled Flock's conflicting current retention documents by separating the 30-day Evidence Policy position, the announced transition to seven days, unchanged existing-customer settings, Connecticut's 21-day-or-shorter contractual overlay, and Fairfield's unknown deployed configuration.
+- Corrected stale retrieval status for Flock's August 13 safeguards announcement and updated the case-code and Evidence Mode findings without treating announced features as deployed.
+- Clarified that owner-directed adversarial and AI-assisted review is not independent third-party assurance or outside endorsement.
+- Made the public repository and its cited underlying evidence authoritative for accepted public claims; private research may seed proposed changes but cannot serve as public evidence or silently override `main`.
+- Restricted the non-scoring Fairfield inventory to factual evidence postures and reserved `Noncompliant` for claim-matrix findings tied to a cited binding obligation.
+
 ### Pending
 
 - Fairfield evidence maintenance, public adversarial review, and technical feasibility review before any later tagged release.

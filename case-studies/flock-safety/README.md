@@ -2,7 +2,7 @@
 
 **Case-study version:** `0.4.0-draft.1`
 
-**Evidence last reviewed:** 2026-08-14  
+**Evidence last reviewed:** 2026-08-17
 **Status:** Open public working draft
 
 ## Scope
@@ -25,7 +25,7 @@ The strongest evidence-bounded concern is narrower: public evidence does not est
 - Compliance tools and public Transparency Portals are described as capable of exposing policy, sharing, retention, and audit information, although availability, local enablement, and history remain customer-dependent. [SRC-0016]
 - The deletion explanation identifies concrete AWS lifecycle and CloudTrail mechanisms and refers to operating-effectiveness testing, which is more specific than a bare deletion promise. The underlying audit report and every storage path are not public in this evidence set. [SRC-0019]
 - California remediation material acknowledges earlier sharing and logging limitations and describes added controls, making a real failure mode and response visible even though the remediation is not independently verified here. [SRC-0021]
-- State-specific contract provisions can materially strengthen national defaults. Connecticut's legal and contractual layers illustrate why jurisdiction-specific assessment matters. [SRC-0022, SRC-0035, SRC-0037]
+- State-specific contract provisions can alter or supersede general terms. Connecticut's 21-day-or-shorter contractual retention provision illustrates why jurisdiction-specific assessment matters, while still not establishing a particular customer's deployed setting. [SRC-0022, SRC-0035, SRC-0037]
 <!-- oasps-citations:end -->
 
 ## Strongest unresolved accountability gaps

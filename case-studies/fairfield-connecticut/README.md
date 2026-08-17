@@ -20,7 +20,7 @@ The [Flock ALPR system page](systems/flock-alpr.md) cross-links the existing Fai
 ## Inventory at a glance
 
 <!-- oasps-citations:start -->
-- **Flock ALPR ecosystem:** 2024 board approval and order-form contents are documented; current execution, configuration, retention, sharing, search activity, audit surface, and operation remain incompletely established. [SRC-0032, SRC-0033]
+- **Flock ALPR ecosystem:** 2024 board approval and a 30-day order-form term are documented, while general Connecticut provisions specify 21 days or a shorter customer-requested period for covered public-agency ALPR data. Current Fairfield execution, configuration, retention, sharing, search activity, audit surface, and operation remain incompletely established. [SRC-0022, SRC-0032, SRC-0033]
 - **Automated traffic enforcement:** Fairfield reports an active Altumint school-zone speed program in six approved groupings, with trained Town citation review and explicit ordinance rules for purpose, appeal, disclosure, retention, destruction, FOIA treatment, and reporting. [SRC-0038, SRC-0039, SRC-0040, SRC-0041, SRC-0042]
 - **Axon police video:** current policy documents body-worn cameras, patrol-vehicle cameras, their core evidence workflow, and named Axon features; current counts, models, complete licensing and configuration, actual control performance, and any Axon ALPR use remain unknown. [SRC-0043, SRC-0044, SRC-0045, SRC-0051]
 - **Police Safe Corridor school-area cameras:** primary records establish authorization and at least partial installation through late 2024, but not a current vendor, approved or deployed count, retention rule, complete analytics, or 2026 status. [SRC-0047, SRC-0048, SRC-0049, SRC-0050]

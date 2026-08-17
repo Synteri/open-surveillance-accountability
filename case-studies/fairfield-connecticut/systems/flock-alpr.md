@@ -33,7 +33,7 @@ The Board minutes establish public authorization of an agreement. The packet doe
 
 ## Data and retention
 
-The meeting-packet order form presents a 30-day retention period, but the public record does not establish that the displayed form was executed or that 30 days is the configured 2026 setting. Current deletion, preservation, export, and secondary-use behavior remain unknown. [SRC-0033]
+The meeting-packet order form presents a 30-day retention period. Flock's general Connecticut contractual provisions specify 21 days or a shorter customer-requested period for covered public-agency ALPR data. Neither document establishes Fairfield's current executed terms or configured 2026 setting; current deletion, preservation, export, and secondary-use behavior remain unknown. [SRC-0022, SRC-0033]
 
 ## Access / sharing
 
@@ -55,6 +55,7 @@ A current executed agreement and product schedule, local ALPR policy, configurat
 ## Sources
 
 <!-- oasps-citations:start -->
+- `SRC-0022` — Flock's general Connecticut contractual provisions. [SRC-0022]
 - `SRC-0032` — June 26, 2024 Board of Selectmen final minutes. [SRC-0032]
 - `SRC-0033` — June 26, 2024 meeting backup and Flock order form. [SRC-0033]
 - `SRC-0036` — former Fairfield Police Flock page, recorded as a broken link. [SRC-0036]

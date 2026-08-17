@@ -250,6 +250,9 @@ ALLOWED_ACTORS = frozenset(
 ALLOWED_EVIDENCE_LABELS = frozenset(
     {"Verified", "Vendor-asserted", "Partially verifiable", "Unknown", "Noncompliant"}
 )
+ALLOWED_INVENTORY_EVIDENCE_LABELS = frozenset(
+    {"Verified", "Vendor-asserted", "Partially verifiable", "Unknown"}
+)
 ALLOWED_ASSESSMENTS = frozenset(
     {"Meets", "Partly meets", "Does not meet", "Unknown", "Not applicable"}
 )
@@ -991,7 +994,7 @@ class Validator:
                 line_number,
                 "evidence_label",
                 evidence,
-                ALLOWED_EVIDENCE_LABELS,
+                ALLOWED_INVENTORY_EVIDENCE_LABELS,
             )
             self.validate_allowed(
                 relative_path,

@@ -9,7 +9,7 @@ OASPS `0.4.0-draft.1` is an open public working draft released for review, corre
 - [x] Review the repository for secrets, plate data, personal travel records, unnecessary personal information, and nonpublic operational details.
 - [x] Record unrecoverable sources and translation limits instead of inventing citations.
 - [x] Kept the repository private, GitHub Pages disabled, and the bootstrap work unmerged until owner review.
-- [x] Complete independent review of the `0.3.0-draft.1` remediation, including validator enforcement, evidence metadata, matrix semantics, exact standards baselines, and the revised public-inspectability rule.
+- [x] Complete owner-directed internal adversarial and AI-assisted review of the `0.3.0-draft.1` remediation, including validator enforcement, evidence metadata, matrix semantics, exact standards baselines, and the revised public-inspectability rule. This was not independent third-party review.
 - [x] Obtain explicit owner approval to change repository visibility and publish the open public working draft.
 
 ## 2. Establish Fairfield's current Flock ALPR state

@@ -4,9 +4,9 @@ These instructions apply to every automated or assisted change in this repositor
 
 ## Governing sources
 
-1. Released GitHub tags are the authoritative public versions after an approved public release.
-2. Before release, the repository is the implementation copy and the private OASPS research workspace is the source for factual and policy content.
-3. Research notes do not silently become accepted claims. Moving research into this repository must be visible in a commit or pull request.
+1. The accepted public working draft is governed by this public repository together with the underlying evidence identified in its public source register. A released GitHub tag is an authoritative snapshot only after an approved public release.
+2. Private research or planning material may generate hypotheses, questions, and proposed changes. It cannot serve as evidence for a public factual claim, silently override `main`, or be necessary to evaluate or reproduce an accepted public claim.
+3. A proposed factual change must be supported by publicly identifiable evidence, added through a visible commit or pull request, and represented as `Unknown` when the public evidence is insufficient.
 4. Do not add a new OASPS requirement, change a responsible actor, or materially change an assessment without documenting the reason in the pull request and changelog.
 
 ## Evidence rules
