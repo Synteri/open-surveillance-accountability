@@ -40,12 +40,13 @@ The jurisdiction inventory adds separate records for Fairfield's current Altumin
 
 ## Start here
 
-1. Read the [standard](STANDARD.md) for the proposed requirements.
-2. Read the [methodology](METHODOLOGY.md) to understand evidence labels, assessments, implementation states, dates, and unknowns.
-3. Read the [Flock Safety vendor case study](case-studies/flock-safety/README.md), its [narrative findings](case-studies/flock-safety/FINDINGS.md), and the machine-readable [claim matrix](case-studies/flock-safety/matrix.csv).
-4. Read the [Fairfield jurisdiction inventory](case-studies/fairfield-connecticut/README.md), its [system pages](case-studies/fairfield-connecticut/systems/), and the machine-readable [inventory](case-studies/fairfield-connecticut/inventory.csv).
-5. Use the [Fairfield Flock record](case-studies/flock-safety/jurisdictions/connecticut/fairfield.md) when claim-level ALPR detail is needed; the jurisdiction inventory cross-links rather than duplicates it.
-6. Resolve every citation through the [source register](evidence/sources.csv) and consult the [data dictionary](DATA-DICTIONARY.md) for exact field meanings.
+1. To commission or fund a Connecticut ALPR review, start with the [funding and commissioning package](funding/README.md).
+2. Read the [standard](STANDARD.md) for the proposed requirements.
+3. Read the [methodology](METHODOLOGY.md) to understand evidence labels, assessments, implementation states, dates, and unknowns.
+4. Read the [Flock Safety vendor case study](case-studies/flock-safety/README.md), its [narrative findings](case-studies/flock-safety/FINDINGS.md), and the machine-readable [claim matrix](case-studies/flock-safety/matrix.csv).
+5. Read the [Fairfield jurisdiction inventory](case-studies/fairfield-connecticut/README.md), its [system pages](case-studies/fairfield-connecticut/systems/), and the machine-readable [inventory](case-studies/fairfield-connecticut/inventory.csv).
+6. Use the [Fairfield Flock record](case-studies/flock-safety/jurisdictions/connecticut/fairfield.md) when claim-level ALPR detail is needed; the jurisdiction inventory cross-links rather than duplicates it.
+7. Resolve every citation through the [source register](evidence/sources.csv) and consult the [data dictionary](DATA-DICTIONARY.md) for exact field meanings.
 
 Additional context:
 
