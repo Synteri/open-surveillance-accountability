@@ -62,11 +62,11 @@ The available source is a vendor announcement and does not supply the independen
 
 <!-- oasps-citations:end -->
 
-### Unretrieved safeguards announcement
+### Safeguards rollout verification
 
 <!-- oasps-citations:start -->
 
-The August 13, 2026 safeguards article was referenced by the Notion research record and its title and date were visible through Flock navigation, but direct retrieval failed during the repository build. Specific rollout claims that depend only on that page are withheld pending a recoverable copy. [SRC-0011]
+The August 13, 2026 safeguards article is now directly retrievable. It announces a seven-day retention transition, Evidence Mode, mandatory case codes by the end of 2026, and reviewed emergency bypasses, while preserving existing customers' approved retention periods. Current rollout, customer adoption, and deployed behavior still require separate evidence. [SRC-0011]
 
 <!-- oasps-citations:end -->
 
@@ -86,7 +86,7 @@ The August 13, 2026 safeguards article was referenced by the Notion research rec
 
 <!-- oasps-citations:start -->
 
-The parent Notion research pass reported indexed Wilton and Windsor portal listings for Fairfield, but the portal content was not directly re-retrievable during the repository build. The relationship is therefore an unresolved lead rather than an established current fact. [SRC-0030, SRC-0031]
+Two public Flock portal URLs are retained as unresolved evidence targets, but direct retrieval returned access errors and no local or archived snapshot is registered. They do not establish a current Fairfield relationship, access, search, or reciprocal sharing. [SRC-0030, SRC-0031]
 
 <!-- oasps-citations:end -->
 

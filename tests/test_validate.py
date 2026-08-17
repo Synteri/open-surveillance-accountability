@@ -403,6 +403,12 @@ class ValidatorTests(unittest.TestCase):
         self.assertIn("real ISO calendar date", joined)
         self.assertIn("is missing from evidence/sources.csv", joined)
 
+    def test_inventory_rejects_noncompliant_evidence_label(self) -> None:
+        self.fixture.write_inventory(
+            [self.fixture.inventory_row(evidence_label="Noncompliant")]
+        )
+        self.assert_error("'evidence_label' is not an allowed value")
+
     def test_inventory_jurisdiction_is_fairfield(self) -> None:
         self.fixture.write_inventory(
             [self.fixture.inventory_row(jurisdiction="Boston, Massachusetts")]

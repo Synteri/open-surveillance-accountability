@@ -2,7 +2,7 @@
 
 **Case-study version:** `0.4.0-draft.1`
 
-**Evidence last reviewed:** 2026-08-14
+**Evidence last reviewed:** 2026-08-17
 
 ## Bottom line
 
@@ -15,7 +15,7 @@ The evidence does not support a conclusion that Flock or a customer committed wr
 ## 1. Documentation does not yet function as one versioned specification
 
 <!-- oasps-citations:start -->
-Flock's public materials are distributed across legal policies, trust pages, product pages, terms, and announcements. The live LPR Policy states a seven-day default, while other general privacy and trust materials have described different retention periods and do not establish any particular customer's setting. The visible update date on a dynamic page also cannot establish when each sentence became effective. A reader therefore needs a local contract and current configuration record, not one generic page, to establish deployed retention. [SRC-0010, SRC-0014, SRC-0015, SRC-0016]
+Flock's public materials are distributed across legal policies, trust pages, product pages, terms, and announcements. The Evidence Policy repeatedly identifies 30 days as the standard or default LPR retention period but also contains seven-day language. The LPR Policy and deletion explainer use seven-day default language, while the August 13 announcement describes 30 days as the former default, announces a transition to seven days, and says existing customers keep their approved periods. These live official documents do not establish one coherent transition state or any customer's setting. The repository recorded the LPR Policy's seven-day wording on August 14 and rechecked it on August 17, but no local or archived snapshot independently preserves the earlier observation; the visible page dates do not establish when any sentence changed. A reader therefore needs an applicable contract and current configuration record, not one generic page, to establish deployed retention. [SRC-0010, SRC-0011, SRC-0014, SRC-0019, SRC-0053]
 <!-- oasps-citations:end -->
 
 This is not evidence of improper retention. It is evidence that rights-relevant documentation needs immutable versions, effective dates, a change history, and explicit labels for `announced`, `rolling out`, `default for new customers`, `optional`, and `universally deployed`.
@@ -25,7 +25,7 @@ This is not evidence of improper retention. It is evidence that rights-relevant 
 <!-- oasps-citations:start -->
 Flock's public material describes required offense-type selection for completed searches. That creates a stronger review predicate than an optional free-text reason and substantially advances OASPS-B02. Publicly recoverable evidence in this build does not establish that every current search is universally linked to a valid case or incident, so OASPS-B03 remains only partly met rather than treated as deployed everywhere. [SRC-0010, SRC-0016, SRC-0018]
 
-The Notion research record referenced an August 13 announcement for future case-code changes, but that article could not be retrieved directly during the repository source audit. The repository therefore withholds the specific rollout timing as an established factual claim and records the gap for later verification. [SRC-0011]
+Flock's now-retrievable August 13 announcement says case codes will be required for all law-enforcement searches by the end of 2026 and emergency bypasses will be flagged for administrator review. The announcement supports planned timing, not universal current implementation, so the matrix retains `Announced or future`. [SRC-0011]
 <!-- oasps-citations:end -->
 
 ## 3. Search filters create a real accountability tradeoff
@@ -94,7 +94,7 @@ Under revised OASPS-E01, this evidence does not establish either the public-insp
 ## 10. Connecticut strengthens the floor but does not answer every OASPS question
 
 <!-- oasps-citations:start -->
-Connecticut Public Act 26-14 establishes ALPR rules with provision-specific effective dates, including restrictions related to enumerated actual or perceived characteristics, First Amendment activity, immigration enforcement, and reproductive or gender-affirming care. Flock also publishes Connecticut-specific contractual provisions. A later act amended part of Public Act 26-14, so the original act is not read in isolation. [SRC-0022, SRC-0035, SRC-0037]
+Connecticut Public Act 26-14 establishes ALPR rules with provision-specific effective dates, including restrictions related to enumerated actual or perceived characteristics, First Amendment activity, immigration enforcement, and reproductive or gender-affirming care. Flock's Connecticut-specific contractual provisions set retention for covered public-agency ALPR data at 21 days or a shorter customer-requested period. A later act amended part of Public Act 26-14, so the original act is not read in isolation. [SRC-0022, SRC-0035, SRC-0037]
 
 These protections matter and should be scored separately from the national baseline. They do not by themselves establish Fairfield's current configuration or answer OASPS questions about exhaustive data derivation, vendor-privileged access, build identity, production attestation, and complete independent audit evidence. [SRC-0022, SRC-0035, SRC-0037]
 <!-- oasps-citations:end -->

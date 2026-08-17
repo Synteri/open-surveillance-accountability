@@ -69,7 +69,7 @@ source_id,title,publisher,url,source_type,published_date,accessed_date,jurisdict
 | `url` | Yes | Direct public retrieval URL. | Must begin with `https://` in the first build. Link to the supporting page or document, not a search-results page. |
 | `source_type` | Yes | Controlled description of the source. | One of the values below. |
 | `published_date` | No | Publication, execution, approval, or visible update date. | Blank when no reliable date is available. |
-| `accessed_date` | Yes | Date the project last retrieved or checked the source. | ISO date; first build uses `2026-08-14` where checked in the Notion evidence pass. |
+| `accessed_date` | Yes | Date the project last retrieved or checked the public source. | ISO date; preserve the recorded review date until the source is checked again. |
 | `jurisdiction` | Yes | Geographic or institutional scope. | Use `Global`, `United States`, `Europe`, `Connecticut`, `Fairfield, Connecticut`, `Wilton, Connecticut`, or another explicit scope. |
 | `archived_url` | No | Lawful stable archive URL. | Blank when no archive was recorded. Do not invent one. |
 | `local_snapshot` | No | Repository-relative path to a lawful local copy. | Blank in the first build unless a reviewed snapshot is actually committed. |
@@ -126,7 +126,7 @@ system_id,system_name,vendor,operator,technology_category,jurisdiction,public_pu
 | `jurisdiction` | Yes | Geographic scope. | This inventory uses `Fairfield, Connecticut`. |
 | `public_purpose` | Yes | Purpose stated in public records. | Records the documented purpose, not a finding about every actual use. |
 | `documented_capabilities` | Yes | Capabilities the cited records describe. | Distinguish described capability from enabled configuration and actual use. |
-| `evidence_label` | Yes | Confidence in the underlying inventory fact. | Uses the same controlled vocabulary as the Flock matrix. |
+| `evidence_label` | Yes | Evidentiary posture of the underlying inventory fact. | One of `Verified`, `Vendor-asserted`, `Partially verifiable`, or `Unknown`. |
 | `implementation_state` | Yes | Best-supported timing or deployment posture. | Uses the same controlled vocabulary as the Flock matrix. |
 | `last_verified` | Yes | Date the cited public evidence was last checked. | ISO date. It is not necessarily the deployment or publication date. |
 | `source_ids` | Conditional | Supporting source identifiers. | Pipe-separated and resolvable. Required when the evidence label is not `Unknown` or the implementation state is `Deployed now`; an unsupported current-deployment claim is invalid. |
@@ -137,7 +137,14 @@ system_id,system_name,vendor,operator,technology_category,jurisdiction,public_pu
 | `next_action` | Conditional | Lawful, proportionate evidence step. | Required under the same incomplete-state condition; it must not direct automated contact, records submission, or testing. |
 | `notes` | No | Scope qualifications, conflicts, count limits, or cross-links. | Use this field to prevent a historical procurement or mixed record from being read as current configuration. |
 
-Allowed `evidence_label` and `implementation_state` values are the same controlled sets documented for the Flock matrix below. Passing inventory validation establishes schema consistency and source resolution; it does not score a system or prove production behavior.
+Allowed inventory `evidence_label` values are:
+
+- `Verified`
+- `Vendor-asserted`
+- `Partially verifiable`
+- `Unknown`
+
+`Noncompliant` is intentionally matrix-only because it requires both an assessment and a cited `binding_obligation`; the non-scoring inventory has neither field. Inventory `implementation_state` values use the matrix set below. Passing inventory validation establishes schema consistency and source resolution; it does not score a system or prove production behavior.
 
 ## `case-studies/flock-safety/matrix.csv`
 
@@ -161,7 +168,7 @@ claim_id,requirement_id,subject,jurisdiction,responsible_actor,actor_override_re
 | `deployed_configuration` | Yes | Version, local setting, rollout state, or production condition in scope. | Historical conditions include the date; current unknowns remain explicit. Current deployment evidence is represented explicitly by `deployment_evidence_state` and `deployment_basis`, not inferred from wording in this field. |
 | `deployment_basis` | Conditional | Evidence basis for treating behavior as deployed now. | Required for `Deployed now`; identify the cited material and preserve vendor, scope, rollout, and customer-configuration limits. Blank for every other implementation state. |
 | `independent_verification` | Yes | What an external party can establish and the boundary of that proof. | Distinguish primary records from vendor claims and NDA-gated assessments. |
-| `evidence_label` | Yes | Confidence in the underlying fact. | Controlled values below. |
+| `evidence_label` | Yes | Evidentiary posture of the underlying fact or binding-obligation finding. | The first four controlled values describe how well a fact is established; `Noncompliant` is reserved for a cited binding-obligation conclusion. |
 | `verified_fact` | Conditional | Exact fact directly established by the cited evidence. | Required for `Verified`; distinguish a verified published statement or document comparison from independently verified product behavior. Blank for other labels. |
 | `assessment` | Yes | Comparison with the requirement. | Controlled values below. |
 | `known_fact_basis` | Conditional | Narrow basis for a definitive assessment made despite an `Unknown` evidence label. | Required only when `Unknown` is paired with `Meets`, `Partly meets`, or `Does not meet`; identify the separately known fact sufficient for that limited assessment and cite at least one resolved source ID. Blank for `Unknown` or `Not applicable` assessments and for all other evidence labels. |

@@ -92,7 +92,7 @@ The ability to determine what a rights-relevant public document said, when it to
 
 ## Evidence label
 
-The project's description of how well an underlying fact is known: `Verified`, `Vendor-asserted`, `Partially verifiable`, `Unknown`, or `Noncompliant`.
+The record's evidentiary posture. `Verified`, `Vendor-asserted`, `Partially verifiable`, and `Unknown` describe how well an underlying fact is established. `Noncompliant` is reserved for a sourced finding that an identified binding obligation was not met; it is not a confidence level.
 
 ## Evidence preservation
 

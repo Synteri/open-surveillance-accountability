@@ -4,8 +4,9 @@ All findings are dated evidence snapshots. A correction to the case study may pr
 
 ## Unreleased
 
+- Reconciled the 30-day Evidence Policy position, the announced seven-day transition, unchanged existing-customer settings, Connecticut's 21-day-or-shorter contractual overlay, and Fairfield's unknown deployed setting without inferring a page-change date.
+- Directly recovered the August 13, 2026 safeguards announcement and updated the announced case-code, Evidence Mode, Audit Assistance, and proactive-lockout findings without treating planned rollout as deployed or independently verified.
 - Await current Fairfield contract, configuration, policy, sharing, audit, and portal evidence.
-- Await a recoverable copy of the August 13, 2026 Flock safeguards announcement before relying on its specific rollout claims.
 - Await independent rights-focused review of audit coverage, deletion paths, secondary use, build identity, and production attestation.
 
 ## 0.4.0-draft.1 — 2026-08-15
