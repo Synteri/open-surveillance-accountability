@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connecticut ALPR Accountability Pilot</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #586572;
+      --paper: #fffdfa;
+      --line: #cfd8df;
+      --blue: #0d5368;
+      --pale: #e9f2f3;
+      --gold: #c58935;
+    }
+    * { box-sizing: border-box; }
+    html { background: #e5e9ec; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.42;
+    }
+    a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    .sheet {
+      width: min(980px, calc(100% - 28px));
+      margin: 28px auto;
+      padding: 48px 52px 38px;
+      background: var(--paper);
+      border-top: 7px solid var(--blue);
+      box-shadow: 0 16px 50px rgba(23, 33, 43, .14);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 34px;
+      align-items: start;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .kicker {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; max-width: 660px; font-family: Georgia, serif; font-size: 40px; line-height: 1.02; }
+    .lede { margin: 14px 0 0; max-width: 680px; color: #34424f; font-size: 17px; }
+    .ask {
+      padding: 19px;
+      color: white;
+      background: var(--blue);
+      border-radius: 3px;
+    }
+    .ask strong { display: block; margin: 3px 0 2px; font: 700 30px/1 Georgia, serif; }
+    .ask p { margin: 8px 0 0; font-size: 12px; line-height: 1.35; }
+    .timing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin: 20px 0 24px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .timing div { padding: 13px 15px; background: var(--pale); }
+    .timing b { display: block; margin-bottom: 3px; color: var(--blue); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; }
+    .timing span { font-size: 13px; line-height: 1.3; }
+    .grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 32px; }
+    section { break-inside: avoid; }
+    h2 {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    p { margin: 0 0 13px; }
+    ul { margin: 7px 0 19px; padding-left: 18px; }
+    li { margin: 0 0 5px; }
+    .deliverables { columns: 2; column-gap: 24px; }
+    .deliverables li { break-inside: avoid; }
+    .note { padding: 14px 15px; background: #f5f1e8; border-left: 3px solid var(--gold); }
+    .benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 18px; margin-bottom: 17px; }
+    .benefits span { font-size: 13px; }
+    .benefits b { color: var(--blue); }
+    .close {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      margin-top: 21px;
+      padding: 18px 20px;
+      color: white;
+      background: var(--ink);
+    }
+    .close p { margin: 0; }
+    .close a { color: #bfe9ee; }
+    .close .terms { color: #d9e0e5; font-size: 12px; text-align: right; }
+    .sources { margin-top: 15px; color: var(--muted); font-size: 10.5px; line-height: 1.32; }
+    .sources p { margin: 0 0 4px; }
+    sup { font-weight: 700; }
+    .screen-only { margin-top: 12px; color: var(--muted); font-size: 12px; text-align: center; }
+    @page { size: Letter; margin: .38in; }
+    @media print {
+      html, body { background: white; }
+      body { font-size: 9.15pt; line-height: 1.29; }
+      .sheet { width: auto; margin: 0; padding: .18in .2in .08in; border-top-width: 5px; box-shadow: none; }
+      .hero { grid-template-columns: 1fr 1.75in; gap: .24in; padding-bottom: .14in; }
+      h1 { font-size: 26pt; }
+      .lede { margin-top: .08in; font-size: 10.3pt; }
+      .ask { padding: .12in; }
+      .ask strong { font-size: 22pt; }
+      .ask p { font-size: 7.9pt; }
+      .timing { margin: .11in 0 .14in; }
+      .timing div { padding: .08in .09in; }
+      .timing span { font-size: 8pt; }
+      .grid { gap: .22in; }
+      h2 { margin-bottom: .04in; font-size: 8.4pt; }
+      p { margin-bottom: .08in; }
+      ul { margin: .04in 0 .1in; padding-left: .15in; }
+      li { margin-bottom: .025in; }
+      .note { padding: .08in .09in; }
+      .benefits { gap: .04in .12in; margin-bottom: .1in; }
+      .benefits span { font-size: 8pt; }
+      .close { margin-top: .12in; padding: .1in .12in; }
+      .close .terms { font-size: 7.6pt; }
+      .sources { margin-top: .08in; font-size: 6.7pt; line-height: 1.18; }
+      .screen-only { display: none; }
+    }
+    @media (max-width: 720px) {
+      .sheet { width: 100%; margin: 0; padding: 30px 24px; }
+      .hero, .grid, .close { grid-template-columns: 1fr; }
+      .timing { grid-template-columns: 1fr; }
+      .deliverables { columns: 1; }
+      .close .terms { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="hero">
+      <div>
+        <p class="kicker">Open, vendor-neutral, reproducible</p>
+        <h1>Connecticut ALPR Accountability Pilot</h1>
+        <p class="lede">Commission a public independent assessment of one real automated license plate reader deployment, beginning with Milford. The result will show what is documented, what is claimed, what is independently verifiable, and what remains unknown.</p>
+      </div>
+      <aside class="ask" aria-label="Commissioning ask">
+        <span>Default engagement</span>
+        <strong>$5,000</strong>
+        <span>Full Independent Assessment</span>
+        <p>$2,500 at kickoff<br>$2,500 on delivery<br>Target: 15 business days</p>
+      </aside>
+    </header>
+
+    <div class="timing" aria-label="Why now">
+      <div><b>Milford</b><span>The city links a Flock LPR portal and policy, while August public debate has created an immediate decision window.<sup><a href="#s1">1</a></sup></span></div>
+      <div><b>Connecticut</b><span>Some contract and public-record rules are in effect; major use, sharing, and retention limits begin October 1.<sup><a href="#s2">2</a></sup></span></div>
+      <div><b>Evidence gap</b><span>ACLU of Connecticut says it filed 94 ALPR records requests and made municipal accountability a 2026 priority.<sup><a href="#s3">3</a></sup></span></div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <section>
+          <h2>The problem</h2>
+          <p>Communities are asked to judge ALPR systems from policy language, vendor descriptions, partial records, and competing public claims. Those layers are not the same. A standard independent review makes the evidence and the gaps inspectable without starting from a pro-vendor or anti-vendor conclusion.</p>
+        </section>
+
+        <section>
+          <h2>The existing framework</h2>
+          <p>OASPS is an open public working draft with 32 testable requirements, a stable source register, claim-by-claim evidence labels, machine-readable ledgers, and publication-safety checks. It is not a certification, legal opinion, or finding of wrongdoing.</p>
+        </section>
+
+        <section>
+          <h2>Exact Milford deliverables</h2>
+          <ul class="deliverables">
+            <li>All 32 criteria applied to one defined deployment</li>
+            <li>Criterion-level evidence with links and access dates</li>
+            <li>Statute, POST, local policy, and contract crosswalk</li>
+            <li>Vendor and agency claims tested against public proof</li>
+            <li>Access, sharing, retention, deletion, and audit analysis</li>
+            <li>Authorization, oversight, misuse prevention, and remedy</li>
+            <li>Unresolved questions and targeted records-request drafts</li>
+            <li>Recommendations, machine-readable evidence, and public summary</li>
+          </ul>
+        </section>
+      </div>
+
+      <div>
+        <section>
+          <h2>What remains unknown</h2>
+          <p class="note">The reviewed public record does not yet establish the complete executed contract and renewal history, current inventory, live sharing configuration, external-access records, completed audits, training completion, configured retention, purge results, preservation exceptions, or operating effectiveness. These are paid-review questions, not findings that safeguards are absent.<sup><a href="#s4">4</a></sup></p>
+        </section>
+
+        <section>
+          <h2>Reproducible by design</h2>
+          <p>Every consequential claim resolves to a source record. Dates, evidence strength, contradictions, implementation state, and missing proof stay visible. Another reviewer can reproduce the reasoning, challenge a citation, or update the case.</p>
+        </section>
+
+        <section>
+          <h2>Who benefits</h2>
+          <div class="benefits">
+            <span><b>Funders:</b> a concrete public output</span>
+            <span><b>Civil liberties:</b> inspectable evidence</span>
+            <span><b>Journalists:</b> a sourced updateable record</span>
+            <span><b>Municipalities:</b> a neutral gap analysis</span>
+            <span><b>Technical reviewers:</b> structured provenance</span>
+            <span><b>Residents:</b> a plain-language account</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>Scale path</h2>
+          <p>A $25,000 founding pilot can extend the method to five to ten Connecticut deployments, compare results, add recurring updates, and build open public infrastructure beyond one vendor.</p>
+        </section>
+      </div>
+    </div>
+
+    <section class="close">
+      <p><strong>Commission the Milford assessment.</strong><br>Reply to Jacob Schumacher at the address that delivered this brief or visit <a href="https://github.com/Synteri/open-surveillance-accountability">github.com/Synteri/open-surveillance-accountability</a>.</p>
+      <p class="terms">Independent findings<br>Public and machine-readable result<br>No guaranteed conclusion</p>
+    </section>
+
+    <footer class="sources">
+      <p id="s1"><b>1.</b> City of Milford <a href="https://www.milfordct.us/921/Real-Time-Information-Center">Real Time Information Center</a>; <a href="https://www.milfordct.us/agendacenter">August 3 meeting materials</a>; Connecticut Public, <a href="https://www.ctpublic.org/2026-08-07/ct-flock-cameras-technology-regulation">August 7 reporting</a>. The exact later action remains unverified.</p>
+      <p id="s2"><b>2.</b> Connecticut <a href="https://www.cga.ct.gov/2026/act/pa/pdf/2026PA-00014-R00SB-00397-PA.pdf">Public Act 26-14</a>, as amended by <a href="https://www.cga.ct.gov/2026/act/Pa/pdf/2026PA-00076-R00SB-00477-PA.PDF">Public Act 26-76</a>; <a href="https://portal.ct.gov/-/media/post/_files/postc-lpr-model-policy-22426-final.pdf?rev=c151eebcdf604cdebb77e72877ccc7ad">POST model policy</a>.</p>
+      <p id="s3"><b>3.</b> ACLU of Connecticut, <a href="https://www.acluct.org/alpr-data-privacy-concerns/">ALPR records work</a> and <a href="https://www.acluct.org/news/2026-legislative-priorities/">2026 policy agenda</a>. Citation does not imply endorsement.</p>
+      <p id="s4"><b>4.</b> Milford <a href="https://www.milfordct.us/DocumentCenter/View/4089/Milford-Police-ALPR-Policy">ALPR policy</a>; <a href="https://www.milfordct.us/DocumentCenter/View/4414/2025--BOA-Minutes">2025 Board minutes</a>; <a href="https://www.milfordct.us/AgendaCenter/ViewFile/Minutes/_02172026-1707">February 2026 finance minutes</a>; Have I Been Flocked <a href="https://haveibeenflocked.com/news/milford-ct-pd-jun2026">Milford audit-data update</a>.</p>
+      <p>Sources accessed August 16, 2026. Illustrative commissioning brief only. OASPS is an open draft, not an accredited standard or legal opinion.</p>
+    </footer>
+  </main>
+  <p class="screen-only">Use your browser's Print command and choose Save as PDF. The print stylesheet is sized for one US Letter page.</p>
+</body>
+</html>

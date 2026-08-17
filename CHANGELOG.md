@@ -4,6 +4,10 @@ All notable changes to the standard, repository-wide method, and public evidence
 
 ## [Unreleased]
 
+### Added
+
+- Added a minimum-complete funding and commissioning package for a vendor-neutral Connecticut ALPR Accountability Pilot, including offers, a bounded Milford preview, outreach operations, and transaction templates.
+
 ### Pending
 
 - Fairfield evidence maintenance, public adversarial review, and technical feasibility review before any later tagged release.
