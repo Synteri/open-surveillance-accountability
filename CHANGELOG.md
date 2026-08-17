@@ -4,6 +4,10 @@ All notable changes to the standard, repository-wide method, and public evidence
 
 ## [Unreleased]
 
+### Added
+
+- Added a minimum-complete funding and commissioning package for a vendor-neutral Connecticut ALPR Accountability Pilot, including offers, a bounded Milford preview, outreach operations, and transaction templates.
+
 ### Corrected
 
 - Reconciled Flock's conflicting current retention documents by separating the 30-day Evidence Policy position, the announced transition to seven days, unchanged existing-customer settings, Connecticut's 21-day-or-shorter contractual overlay, and Fairfield's unknown deployed configuration.

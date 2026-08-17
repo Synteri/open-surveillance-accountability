@@ -27,6 +27,7 @@ CORE_DIRECTORIES = (
     "case-studies/fairfield-connecticut/systems",
     "case-studies/flock-safety/jurisdictions/connecticut",
     "evidence/snapshots",
+    "funding",
     "scripts",
     "standard/crosswalks",
     "tests",
@@ -75,6 +76,18 @@ CORE_FILES = (
     "evidence/README.md",
     "evidence/snapshots/README.md",
     "evidence/sources.csv",
+    "funding/README.md",
+    "funding/call-script.md",
+    "funding/engagement-agreement-template.md",
+    "funding/fiscal-sponsorship.md",
+    "funding/invoice-and-close-checklist.md",
+    "funding/milford-preview.md",
+    "funding/offers.md",
+    "funding/outreach-messages.md",
+    "funding/pilot-brief.html",
+    "funding/pilot-brief.md",
+    "funding/targets.csv",
+    "funding/targets.md",
     "scripts/validate.py",
     "standard/crosswalks/README.md",
     "standard/crosswalks/convention-108-plus.md",
@@ -90,7 +103,7 @@ ROOT_SPECIAL_FILES = frozenset(
 )
 SNAPSHOT_EXTENSIONS = frozenset({".txt", ".md", ".csv", ".json"})
 PUBLISHABLE_EXTENSIONS = frozenset(
-    {".md", ".csv", ".yml", ".yaml", ".cff", *SNAPSHOT_EXTENSIONS}
+    {".md", ".csv", ".html", ".yml", ".yaml", ".cff", *SNAPSHOT_EXTENSIONS}
 )
 
 SOURCE_HEADER = (
@@ -399,6 +412,8 @@ def is_supported_path(relative_path: str) -> bool:
         if pure.parts[:2] == ("evidence", "snapshots"):
             return pure.suffix.lower() in SNAPSHOT_EXTENSIONS
         return pure.suffix.lower() in {".md", ".csv"}
+    if pure.parts[0] == "funding":
+        return pure.suffix.lower() in {".md", ".csv", ".html"}
     if pure.parts[0] in {"scripts", "tests"}:
         return pure.suffix.lower() == ".py"
     if pure.parts[0] == ".github":

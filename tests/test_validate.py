@@ -302,6 +302,12 @@ class ValidatorTests(unittest.TestCase):
         self.fixture.write("tests/test_future.py", '"""Future validator test."""\n')
         self.assert_valid()
 
+    def test_funding_markdown_csv_and_html_are_permitted(self) -> None:
+        self.fixture.write("funding/future-note.md", "# Future funding note\n")
+        self.fixture.write("funding/future-targets.csv", "organization,status\nExample,planned\n")
+        self.fixture.write("funding/future-brief.html", "<!doctype html><title>Brief</title>\n")
+        self.assert_valid()
+
     def test_unsupported_untracked_candidate_is_not_published(self) -> None:
         self.fixture.write_bytes("assets/draft.bin", b"\xff\xfe")
         self.assert_valid()
